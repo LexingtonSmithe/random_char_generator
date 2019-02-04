@@ -24,9 +24,9 @@ router.get('/health', function(req, res) {
 
 router.get('/generateCharacter', function(req, res) {
 
-    var char = builder.CreateChar()
+    var data = builder.CreateChar()
     res.json({
-      char
+      data
    });
 });
 

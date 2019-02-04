@@ -2,7 +2,7 @@ module.exports = {
   "Name": "",
   "Race": {
     "Race": "",
-    "Sub Race": "None",
+    "Sub-Race": "None",
     "Special Abilities": [],
     "Description": ""
   },
@@ -15,7 +15,10 @@ module.exports = {
     "Alignment": "",
     "Description": ""
   },
-  "Background": "",
+  "Background": {
+    "Name": "",
+    "Description": ""
+  },
   "Personality": {
     "Personality Trait": "",
     "Ideals": "",

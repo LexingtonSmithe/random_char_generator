@@ -27,6 +27,7 @@ exports.rollStatDie = function(howMany, ofWhatDie, forWhatStat){
 exports.rollDie = function(howMany, ofWhatDie){
     min = Math.ceil(1);
     max = Math.floor(ofWhatDie);
+    var total = 0;
     for(var i = 0; i < howMany; i++){
         total += (Math.floor(Math.random() * (max - min)) + min);
     }
