@@ -3,13 +3,13 @@ module.exports = {
   "Race": {
     "Race": "",
     "Sub-Race": "None",
-    "Special Abilities": [],
     "Description": ""
   },
   "Class": {
     "Class": "",
     "Sub-Class": "",
-    "Special Abilities": ""
+    "Description": "",
+    "Primary Ability": ""
   },
   "Alignment": {
     "Alignment": "",
@@ -80,6 +80,9 @@ module.exports = {
     "Scars": "",
     "Distinguishing Marks": ""
   },
+  "Racial Abilities": [],
+  "Class Abilities": [],
+  "Spellcasting":{},
   "Proficiencies":[],
   "Languages": []
 }

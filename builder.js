@@ -6,6 +6,8 @@ var reset = require('./charTemplate.js');
 var names = require('./Library/names.js');
 var races = require('./Library/races.js');
 var subraces = require('./Library/subraces.js');
+var classes = require('./Library/classes.js');
+var subclasses = require('./Library/subclasses.js');
 var backgrounds = require('./Library/backgrounds.js');
 var alignments = require('./Library/alignments.js');
 
@@ -25,8 +27,7 @@ exports.CreateChar = function(){
   chooseAlignment();
   chooseBackground();
   chooseRace();
-  var c = getClasses();
-  var s = chooseClass(c);
+  chooseClass();
   getSkills();
 
 
@@ -94,7 +95,7 @@ function chooseRace(race){
   }
   for(var i = 0; i < races[num].traits.length; i++){
     trait = races[num].traits[i];
-    character.Race["Special Abilities"].push(trait);
+    character["Racial Abilities"].push(trait);
   }
   if(races[num].subraces.length){
     var odds = utils.getRandomInt(0, 2);
@@ -136,7 +137,7 @@ function getSubRace(subrace_name){
           if(trait == "choose_one"){
             trait = subraces[num].traits[i].choose_one[utils.getRandomInt(0, subraces[num].traits[i].choose_one.length)]
           }
-          character.Race["Special Abilities"].push(trait);
+          character["Racial Abilities"].push(trait);
         }
       }
       if(subraces[num].skill_bonuses) {
@@ -172,40 +173,48 @@ function chooseBackground(){
   character.Personality.Bond = backgrounds[background_choice].Bond[utils.rollDie(1, 6)];
   character.Personality.Flaws = backgrounds[background_choice].Flaws[utils.rollDie(1, 6)];
 }
-function getClasses(){
-  var req = request('GET', generateEndpoint('/classes'))
-  var response = JSON.parse(req.body);
-  var races = response.results;
-  var num = utils.getRandomInt(0,races.length) + 1;
-  return num;
-}
-function chooseClass(num){
-  var req = request('GET', generateEndpoint('/classes/' + num))
-  var response = JSON.parse(req.body);
-  character.Class.Class = response.name;
-  console.log("Chosen Class: " + response.name);
-  var subclass_number = false;
-  if(response.subclasses.length > 0){
-    var num = utils.getRandomInt(0,response.subclasses.length);
-    var str = response.subclasses[num].url;
-    console.log("Chosen Sub-Class: " + response.subclasses[num].name);
-    var test_string = "http://www.dnd5eapi.co/api/subclasses/1"
-    if(str.length > test_string.length){
-      var a = str.charAt(str.length-2);
-      var b = str.charAt(str.length-1);
-      subclass_number =("" + a + b);
-    } else{
-      var subclass_number = str.charAt(str.length-1);
+function chooseClass(){
+  var num = utils.getRandomInt(0, classes.length);
+  character.Class.Class = classes[num].name;
+  character.Class.Description = classes[num].description;
+  character.Class["Primary Ability"] = classes[num].primary_ability
+  character.Stats["Hit Die"] = classes[num].hit_die;
+  if(classes[num].proficiency_choices){
+    var p_c = classes[num].proficiency_choices.how_many;
+    var p_arr = classes[num].proficiency_choices.choices;
+    for(var i = 0; i < p_c; i++){
+        b = p_arr[utils.getRandomInt(0, p_arr.length)]
+        skill_bonuses.push(b)
+        p_arr.splice(b, 1);
     }
+  };
+  for(var j = 0; j < classes[num].traits.length; j++){
+    trait = classes[num].traits[j];
+    character["Class Abilities"].push(trait);
+  };
+  if(classes[num].starting_proficiencies.length){
+    for(var j = 0; j < classes[num].starting_proficiencies.length; j++) {
+      var p = classes[num].starting_proficiencies[j];
+      character.Proficiencies.push(p);
+    }
+  };
+  if(classes[num].subclasses.length){
+    var odds = utils.getRandomInt(0, 2);
+    if(odds == 2){ // don't always get a subclasses only do it 1/3 of the time
+      var c_num = utils.getRandomInt(0,classes[num].subclasses.length);
+      var subclasses_name = classes[num].subclasses[c_num];
+      getSubClass(subclasses_name);
+    } else {
+      character.Class["Sub-Class"] = "None"
+    }
+  } else {
+    character.Class["Sub-Class"] = "None"
   }
-  return subclass_number;
 }
 function getSubClass(num){
-  var req = request('GET', generateEndpoint('/subclasses/' + num))
-  var response = JSON.parse(req.body);
-  character.Class["Sub-Class"] = response.name;
-  return true;
+
 }
+
 function getSkills(){
   calculateBonuses();
 }
@@ -236,7 +245,7 @@ function getRandomProficiencies(){
     "Survival"
   ]
   for(var p = 0; p < 2; p++){
-    var n = getRandomInt(0,arr.length)
+    var n = utils.getRandomInt(0,arr.length)
     b = arr[n]
     skill_bonuses.push(b)
     arr.splice(n, 1);
@@ -247,7 +256,8 @@ function getRandomProficiencies(){
 function resetCharacter(){
   character = reset;
   skill_bonuses = []
-  character.Race["Special Abilities"] = []
+  character["Racial Abilities"] = [];
+  character["Class Abilities"] = [];
   character["Ability Scores"].Strength = 0;
   character["Ability Scores"].Dexterity = 0;
   character["Ability Scores"].Constitution = 0;
