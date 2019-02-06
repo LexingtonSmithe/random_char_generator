@@ -34,7 +34,7 @@ module.exports = {
     "Charisma": 0
   },
   "Stats":{
-    "Proficeny Bonus": "",
+    "Proficieny Bonus": 2,
     "Hit Die": 0,
     "Max Health": 0,
     "Base AC": 0,
@@ -71,18 +71,18 @@ module.exports = {
     "Charisma": 0
   },
   "Appearance": {
-    "Description": "",
-    "Age": 0,
-    "Height": 0,
-    "Weight": 0,
+    "Age": "",
+    "Height": "",
+    "Weight": "",
     "Eyes": "",
     "Hair": "",
+    "Skin": "",
     "Scars": "",
     "Distinguishing Marks": ""
   },
   "Racial Abilities": [],
   "Class Abilities": [],
-  "Spellcasting":{},
+  "Spell Casting":{},
   "Proficiencies":[],
   "Languages": []
 }

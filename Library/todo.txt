@@ -1,1 +1,3 @@
-get the dragonborn sub-races aligned with the ancestry
+add features for backgrounds
+add starting equipment to backgrounds
+add starting equipment to classes

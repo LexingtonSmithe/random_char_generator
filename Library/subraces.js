@@ -13,7 +13,7 @@ module.exports = [
         "name": "Dwarven Toughness",
         "description": "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
       }
-    ],
+    ]
   },
   // mountain dwarf
   {
@@ -27,7 +27,7 @@ module.exports = [
     ],
     "languages": [],
     "additional_languages": {},
-    "traits": [],
+    "traits": []
   },
   // high elf
   {
@@ -64,58 +64,58 @@ module.exports = [
         "Undercommon"
       ]
     },
-    "traits": [{
-      "choose_one": [
-          {
-              "name": "High Elf Cantrip: Light",
-              "description": "You use your action to touch an object no longer than 10 feet in any dimension, causing it to shine bright light of a color you choose in a 20-foot radius and dim light for an additional 20 feet. If the object is completely covered, the light is blocked. The spell ends if you cast it again or dismiss the light as an action."
-          },
-          {
-              "name": "High Elf Cantrip: Mage Hand",
-              "description": "You use your action to create a spectral, floating hand at a point you choose. Once made, you can use your action to control the hand. It can move up to 30 feet at a time, but can't be more than 30 feet away from you or it will vanish. The hand is able to manipulate objects, open an unlocked door or container, put away or get an item out of an open container, or pour out a vial's contents. It can't attack, activate magic items, or carry more than 10 pounds. You use an action to dismiss the hand before the end of the duration"
-          },
-          {
-              "name": "High Elf Cantrip: Mending",
-              "description": "You take a minute to cast this spell, and it fixes a break or tear in an object you touch while leaving no traces of the damage. The damage can't be longer than 1 foot in any dimension. The spell can fix constructs and magic items, but can't restore magical properties."
-          },
-          {
-              "name": "High Elf Cantrip: Message",
-              "description": "You point at a creature and whisper a message that only it can hear, and it can whisper back a reply that only you hear. You can cast through objects if you know the target and that it's beyond the wall, but magical silence, 1 foot of stone, 1 inch of metals, a thin sheet of lead, and 3 feet of wood will block the spell. The spell can move through corners and other openings"
-          },
-          {
-              "name": "High Elf Cantrip: Minor Illusion",
-              "description": "You create a sound or an image of an object that lasts for the duration. The illusion ends early if you dismiss it as an action or cast this spell again. If you create a sound, it can be any volume and noise. The sound can continue unabated for the duration, or you can make sounds at different times. If you create an image of an object, it must be no larger than a 5-foot cube. The image can't create any sensory effects. Physical interaction with the image reveals it to be an illusion."
-          },
-          {
-              "name": "High Elf Cantrip: Acid Splash",
-              "description": "You throw a bubble of acid at a creature you can see, or at two creatures within 5 feet of each other, and force them to pass a Dexterity save or take 1d6 acid damage. Intelligence is your spellcasting ability for it."
-          },
-          {
-              "name": "High Elf Cantrip: Prestidigitation",
-              "description": "You can create a harmless sensory effect, light or put out a small fire, clean or soil an object no larger than 1 cubic foot, hill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour, make a small mark appear on an object or surface for 1 hour, create a nonmagical trinket or a hand-sized illusory image that lasts until the end of your next turn. If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time, and you can dismiss an effect as an action."
-          },
-          {
-              "name": "High Elf Cantrip: Ray of Frost",
-              "description": "You use your action to fire a beam of ice at a creature you can see. Make a ranged spell attack. On hit, the target takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn. Intelligence is your spellcasting ability for it."
-          },
-          {
-              "name": "High Elf Cantrip: Shocking Grasp",
-              "description": "You use your action to try to touch a creature with a lightning shock. Make a melee spell attack, with advantage if the target is wearing metal armor. On hit, the target takes 1d8 lightning damage and can't take reactions until the start of its next turn. Intelligence is your spellcasting ability for it."
-          },
-          {
-              "name": "High Elf Cantrip: True Strike",
-              "description": "After taking one action to concentrate on your next turn, your first attack roll on the target has advantage."
-          },
-          {
-              "name": "High Elf Cantrip: Chill Touch",
-              "description": "You use your action to make a ghostly, skeletal hand that attempts to cling to a creature you can see within range. Make a ranged spell attack. On hit, the hand grabs the target, dealing 1d8 necrotic damage. The hand then remains there until the start of your next turn. During this time, the target is unable to regain hit points. If you hit an undead creature with this spell, it has disadvantage on attack rolls against you until the end of your next turn. Intelligence is your spellcasting ability for it."
-          },
-          {
-              "name": "High Elf Cantrip: Dancing Lights",
-              "description": "You create up to four torch-sized lights that hover in the air. Each shed dim light in a 10-foot radius. You can also form them into one glowing humanoid shape. As a bonus action, you can move the lights up to 60 feet. Each light must be within at least 20 feet of another one. A light goes out if it exceeds the ranges of the spell."
-          }
-        ]}
-    ],},
+    "traits": [],
+    "choose_one": [
+        {
+            "name": "High Elf Cantrip: Light",
+            "description": "You use your action to touch an object no longer than 10 feet in any dimension, causing it to shine bright light of a color you choose in a 20-foot radius and dim light for an additional 20 feet. If the object is completely covered, the light is blocked. The spell ends if you cast it again or dismiss the light as an action."
+        },
+        {
+            "name": "High Elf Cantrip: Mage Hand",
+            "description": "You use your action to create a spectral, floating hand at a point you choose. Once made, you can use your action to control the hand. It can move up to 30 feet at a time, but can't be more than 30 feet away from you or it will vanish. The hand is able to manipulate objects, open an unlocked door or container, put away or get an item out of an open container, or pour out a vial's contents. It can't attack, activate magic items, or carry more than 10 pounds. You use an action to dismiss the hand before the end of the duration"
+        },
+        {
+            "name": "High Elf Cantrip: Mending",
+            "description": "You take a minute to cast this spell, and it fixes a break or tear in an object you touch while leaving no traces of the damage. The damage can't be longer than 1 foot in any dimension. The spell can fix constructs and magic items, but can't restore magical properties."
+        },
+        {
+            "name": "High Elf Cantrip: Message",
+            "description": "You point at a creature and whisper a message that only it can hear, and it can whisper back a reply that only you hear. You can cast through objects if you know the target and that it's beyond the wall, but magical silence, 1 foot of stone, 1 inch of metals, a thin sheet of lead, and 3 feet of wood will block the spell. The spell can move through corners and other openings"
+        },
+        {
+            "name": "High Elf Cantrip: Minor Illusion",
+            "description": "You create a sound or an image of an object that lasts for the duration. The illusion ends early if you dismiss it as an action or cast this spell again. If you create a sound, it can be any volume and noise. The sound can continue unabated for the duration, or you can make sounds at different times. If you create an image of an object, it must be no larger than a 5-foot cube. The image can't create any sensory effects. Physical interaction with the image reveals it to be an illusion."
+        },
+        {
+            "name": "High Elf Cantrip: Acid Splash",
+            "description": "You throw a bubble of acid at a creature you can see, or at two creatures within 5 feet of each other, and force them to pass a Dexterity save or take 1d6 acid damage. Intelligence is your spellcasting ability for it."
+        },
+        {
+            "name": "High Elf Cantrip: Prestidigitation",
+            "description": "You can create a harmless sensory effect, light or put out a small fire, clean or soil an object no larger than 1 cubic foot, hill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour, make a small mark appear on an object or surface for 1 hour, create a nonmagical trinket or a hand-sized illusory image that lasts until the end of your next turn. If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time, and you can dismiss an effect as an action."
+        },
+        {
+            "name": "High Elf Cantrip: Ray of Frost",
+            "description": "You use your action to fire a beam of ice at a creature you can see. Make a ranged spell attack. On hit, the target takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn. Intelligence is your spellcasting ability for it."
+        },
+        {
+            "name": "High Elf Cantrip: Shocking Grasp",
+            "description": "You use your action to try to touch a creature with a lightning shock. Make a melee spell attack, with advantage if the target is wearing metal armor. On hit, the target takes 1d8 lightning damage and can't take reactions until the start of its next turn. Intelligence is your spellcasting ability for it."
+        },
+        {
+            "name": "High Elf Cantrip: True Strike",
+            "description": "After taking one action to concentrate on your next turn, your first attack roll on the target has advantage."
+        },
+        {
+            "name": "High Elf Cantrip: Chill Touch",
+            "description": "You use your action to make a ghostly, skeletal hand that attempts to cling to a creature you can see within range. Make a ranged spell attack. On hit, the hand grabs the target, dealing 1d8 necrotic damage. The hand then remains there until the start of your next turn. During this time, the target is unable to regain hit points. If you hit an undead creature with this spell, it has disadvantage on attack rolls against you until the end of your next turn. Intelligence is your spellcasting ability for it."
+        },
+        {
+            "name": "High Elf Cantrip: Dancing Lights",
+            "description": "You create up to four torch-sized lights that hover in the air. Each shed dim light in a 10-foot radius. You can also form them into one glowing humanoid shape. As a bonus action, you can move the lights up to 60 feet. Each light must be within at least 20 feet of another one. A light goes out if it exceeds the ranges of the spell."
+        }
+      ]
+  },
   // dark elf
   {
     "name": "Dark Elf (Drow)",
@@ -142,7 +142,28 @@ module.exports = [
         "name": "Drow Magic",
         "description": "You know the dancing lights cantrip and can cast it at will. Starting from 3rd level, you can cast the faerie fire spell once. Starting from 5th level, you can cast the darkness spell once. Charisma is your spellcasting ability for these spells. You regain expended uses of this trait when you complete a long rest."
       }
+    ]
+  },
+  // wood elf
+  {
+    "name": "Wood Elf",
+    "ability_bonuses": [
+      0, 0, 0, 0, 1, 0,
     ],
+    "starting_proficiencies": [
+      "Longswords",
+      "Shortswords",
+      "Shortbow",
+      "Longbow",
+    ],
+    "languages": [],
+    "additional_languages": {},
+    "traits": [
+      {
+        "name": "Mask Of The Wild",
+        "description": "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist and other natural phenomena"
+      }
+    ]
   },
   // lightfoot halfling
   {
@@ -158,7 +179,8 @@ module.exports = [
       "name": "Naturally Stealthy",
       "description": "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you."
     }
-  ],},
+  ]
+},
   // stout halfling
   {
   "name": "Stout Halfling",
@@ -171,9 +193,10 @@ module.exports = [
   "traits": [
     {
       "name": "Stout Resiliance",
-      "description": "You have advantage on saving throws against poison, an dyou have resistance against poision damage"
+      "description": "You have advantage on saving throws against poison, and you have resistance against poision damage"
     }
-  ],},
+  ]
+},
   // forest gnome
   {
     "name": "Forest Gnome",
@@ -193,7 +216,7 @@ module.exports = [
         "description": "Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts. Forest gnomes love animals and often keep squirrels, badgers, rabbits, moles, woodpeckers and other creatures as beloved pets"
       }
 
-    ],
+    ]
   },
   // rock gnome
   {
@@ -213,7 +236,7 @@ module.exports = [
         "name": "Tinker",
         "description": "You have proficiency with artisan tools (tinkers tools). Using those tools you can spend 1 hour and 10gp worth of materials to construct a tink clockwork device (AC 5 1hp) such as a clockwork toy, fire starter or music box. The device ceases to function after 24 hours unless you spend 1 hour to repair it"
       }
-    ],
+    ]
   },
   // black draconic ancestry
   {
@@ -233,7 +256,7 @@ module.exports = [
         "name": "Damage Resitance: Acid",
         "description": "You have resistance to acid damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
   // blue draconic ancestry
   {
@@ -253,7 +276,7 @@ module.exports = [
         "name": "Damage Resitance: Lightning",
         "description": "You have resistance to lightning damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
   // brass draconic ancestry
   {
@@ -273,7 +296,7 @@ module.exports = [
         "name": "Damage Resitance: Fire",
         "description": "You have resistance to fire damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
   // bronze draconic ancestry
   {
@@ -293,7 +316,7 @@ module.exports = [
         "name": "Damage Resitance: Lightning",
         "description": "You have resistance to lightning damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
   // copper draconic ancestry
   {
@@ -313,7 +336,7 @@ module.exports = [
         "name": "Damage Resitance: Acid",
         "description": "You have resistance to acid damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
   // gold draconic ancestry
   {
@@ -333,7 +356,7 @@ module.exports = [
         "name": "Damage Resitance: Fire",
         "description": "You have resistance to fire damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
   // green draconic ancestry
   {
@@ -353,7 +376,7 @@ module.exports = [
         "name": "Damage Resitance: Poison",
         "description": "You have resistance to poison damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
   // red draconic ancestry
   {
@@ -373,7 +396,7 @@ module.exports = [
         "name": "Damage Resitance: Fire",
         "description": "You have resistance to fire damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
   // silver draconic ancestry
   {
@@ -393,7 +416,7 @@ module.exports = [
         "name": "Damage Resitance: Cold",
         "description": "You have resistance to cold damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
   // white draconic ancestry
   {
@@ -413,6 +436,6 @@ module.exports = [
         "name": "Damage Resitance: Cold",
         "description": "You have resistance to cold damage type due to your draconic ancestry."
       }
-    ],
+    ]
   },
 ]

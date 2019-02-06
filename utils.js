@@ -20,7 +20,7 @@ exports.rollStatDie = function(howMany, ofWhatDie, forWhatStat){
     function add(a, b) {
         return a + b;
     }
-    console.log("Rolled: " + arr + " Total: " + total + " For: " + forWhatStat)
+    // console.log("Rolled: " + arr + " Total: " + total + " For: " + forWhatStat)
     return total
 }
 
