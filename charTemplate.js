@@ -39,6 +39,7 @@ module.exports = {
     "Max Health": 0,
     "Base AC": 0,
     "Speed": 0,
+    "Size": "",
     "Passive Perception": 0,
   },
   "Skills": {

@@ -1,10 +1,11 @@
 module.exports = [
-    {
+  // acolyte
+  {
       "Name": "Acolyte",
       "Description": "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine.You are not necessarily a cleric; performing sacred rites is not the same thing as channeling divine power. Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service.",
       "Bonuses": [
-        "Skill: Insight",
-        "Skill: Religion"
+        "Insight",
+        "Religion"
       ],
       "Personality Trait": {
         1: "You idolize a particular hero of your faith and constantly refer to that persons deeds and example",

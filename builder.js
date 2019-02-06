@@ -1,11 +1,14 @@
 var exports = module.exports = {};
 var request = require('sync-request');
-var character = require('./character.js');
 var utils = require('./utils.js');
-var names = require('./names.js');
+var character = require('./character.js');
 var reset = require('./charTemplate.js');
-var backgrounds = require('./backgrounds.js');
-var alignments = require('./alignments.js');
+var names = require('./Library/names.js');
+var races = require('./Library/races.js');
+var subraces = require('./Library/subraces.js');
+var backgrounds = require('./Library/backgrounds.js');
+var alignments = require('./Library/alignments.js');
+
 var mainURL = 'http://dnd5eapi.co/api'
 function generateEndpoint(path, param) {
     param = param || ''
@@ -14,24 +17,18 @@ function generateEndpoint(path, param) {
 }
 
 // variables
-const skill_bonuses = []
+var skill_bonuses = []
 
 exports.CreateChar = function(){
   resetCharacter();
-  getStats();
-  getAlignment();
-  getBackground();
-  var classNumber = getClasses();
-  var subclassNumber = chooseClass(classNumber);
-  if(subclassNumber){
-      var subRace = getSubClass(subclassNumber);
-  }
+  rollStats();
+  chooseAlignment();
+  chooseBackground();
+  chooseRace();
+  var c = getClasses();
+  var s = chooseClass(c);
   getSkills();
-  var raceNumber = getRaces();
-  var subRaceNumber = chooseRace(raceNumber);
-  if(subRaceNumber) {
-    var subRace = getSubRace(subRaceNumber);
-  }
+
 
   return character;
 }
@@ -46,7 +43,7 @@ function chooseName(race){
   character.Name = name;
   return name;
 }
-function getStats(){
+function rollStats(){
   character["Ability Scores"].Strength += utils.rollStatDie(4, 6, "Strength");
   character["Ability Scores"].Dexterity += utils.rollStatDie(4, 6, "Dexterity");
   character["Ability Scores"].Constitution += utils.rollStatDie(4, 6, "Constitution");
@@ -54,137 +51,119 @@ function getStats(){
   character["Ability Scores"].Wisdom += utils.rollStatDie(4, 6, "Wisdom");
   character["Ability Scores"].Charisma += utils.rollStatDie(4, 6, "Charisma");
 }
-function getAlignment(){
+function chooseAlignment(){
   character.Alignment = alignments[utils.getRandomInt(0, alignments.length)];
 }
-function getRaces(){
-  var req = request('GET', generateEndpoint('/races'))
-  var response = JSON.parse(req.body);
-  var races = response.results;
-  var num = utils.getRandomInt(0,races.length) + 1;
-  return num;
-}
 function chooseRace(race){
-  var race_req = request('GET', generateEndpoint('/races/' + race))
-  var race_response = JSON.parse(race_req.body);
-  character.Race.Race = race_response.name;
-  var n = chooseName(race_response.name);
-  console.log("Name:" + n)
-  console.log("Race Name: " + race_response.name);
-  // This applies to racial skill proficiency bonuses such as 'Intimidation'
-  if(race_response.starting_proficiencies.length){
-    for(var j = 0; j < race_response.starting_proficiencies.length; j++) {
-      var b = race_response.starting_proficiencies[j].name;
-      addBonus(b);
-    }
-  }
-  for(var i = 0; i < race_response.languages.length; i++){
-    character.Languages.push(race_response.languages[i].name);
-    console.log("Adding Language: " + race_response.languages[i].name);
-  }
-  for(var i = 0; i < race_response.traits.length; i++){
-    var trait_name = race_response.traits[i].name;
-    if(trait_name.includes("Darkvision")){
-      trait_name = "Darkvision";
-    };
-    if(trait_name){
-      addTrait(trait_name);
-    };
-  }
-  character.Stats.Speed = race_response.speed;
-  character["Ability Scores"].Strength += race_response.ability_bonuses[0];
-  character["Ability Scores"].Dexterity += race_response.ability_bonuses[1];
-  character["Ability Scores"].Constitution += race_response.ability_bonuses[2];
-  character["Ability Scores"].Intelligence += race_response.ability_bonuses[3];
-  character["Ability Scores"].Wisdom += race_response.ability_bonuses[4];
-  character["Ability Scores"].Charisma += race_response.ability_bonuses[5];
-  character.Race.Description = race_response.size_description;
+  var num = utils.getRandomInt(0, races.length);
+  character.Race.Race = races[num].name
+  chooseName(races[num].name);
+  character.Race.Description = races[num].description
+  character.Appearance.Age = utils.getRandomInt(races[num].min_age, races[num].max_age);
+  character.Stats.Size = races[num].size;
+  character.Stats.Speed = races[num].speed;
+  character["Ability Scores"].Strength += races[num].ability_bonuses[0];
+  character["Ability Scores"].Dexterity += races[num].ability_bonuses[1];
+  character["Ability Scores"].Constitution += races[num].ability_bonuses[2];
+  character["Ability Scores"].Intelligence += races[num].ability_bonuses[3];
+  character["Ability Scores"].Wisdom += races[num].ability_bonuses[4];
+  character["Ability Scores"].Charisma += races[num].ability_bonuses[5];
 
-  var subrace_number = false;
-  if(race_response.subraces.length > 0){
-    var num = utils.getRandomInt(0,race_response.subraces.length);
-    var str = race_response.subraces[num].url;
-    var subrace_number = str.charAt(str.length-1);
-  }
-  return subrace_number;
-}
-function getSubRace(subrace_number){
-  var sub_req = request('GET', generateEndpoint('/subraces/' + subrace_number));
-  var sub_response = JSON.parse(sub_req.body);
-  if(sub_response){
-    character.Race["Sub-Race"] = sub_response.name;
-    character["Ability Scores"].Strength += sub_response.ability_bonuses[0];
-    character["Ability Scores"].Dexterity += sub_response.ability_bonuses[1];
-    character["Ability Scores"].Constitution += sub_response.ability_bonuses[2];
-    character["Ability Scores"].Intelligence += sub_response.ability_bonuses[3];
-    character["Ability Scores"].Wisdom += sub_response.ability_bonuses[4];
-    character["Ability Scores"].Charisma += sub_response.ability_bonuses[5];
-    if(sub_response.starting_proficiencies) {
-      for(var i = 0; i < sub_response.starting_proficiencies.length; i++){
-        var b = race_response.starting_proficiencies[i].name;
-        addBonus(b);
+  if(races[num].starting_proficiencies.length){
+    for(var j = 0; j < races[num].starting_proficiencies.length; j++) {
+      var p = races[num].starting_proficiencies[j];
+      if(p == "Versitility"){
+        getRandomProficiencies();
+      } else {
+        character.Proficiencies.push(p);
       }
     }
-    if(sub_response.racial_traits) {
-      for(var i = 0; i < sub_response.racial_traits.length; i++){
-        var trait_name = sub_response.racial_traits[i].name;
-        if(trait_name.includes("Darkvision")){
-          trait_name = "Darkvision";
-        }
-        if(trait_name){
-          addTrait(trait_name);
-        }
-      }
+  }
+  if(races[num].skill_bonuses.length){
+    for(var j = 0; j < races[num].skill_bonuses.length; j++) {
+      var b = races[num].skill_bonuses[j];
+      skill_bonuses.push(b);
+    }
+  }
+  if(races[num].additional_languages){
+    if(races[num].additional_languages.number == 1){
+      character.Languages.push(races[num].additional_languages.languages[utils.getRandomInt(0,races[num].additional_languages.languages.length)])    }
+  }
+  for(var i = 0; i < races[num].languages.length; i++){
+    character.Languages.push(races[num].languages[i]);
+  }
+  for(var i = 0; i < races[num].traits.length; i++){
+    trait = races[num].traits[i];
+    character.Race["Special Abilities"].push(trait);
+  }
+  if(races[num].subraces.length){
+    var odds = utils.getRandomInt(0, 2);
+    if(odds == 2){ // don't always get a subrace only do it 1/3 of the time
+      var s_num = utils.getRandomInt(0,races[num].subraces.length);
+      var subrace_name = races[num].subraces[s_num];
+      getSubRace(subrace_name);
+    } else {
+      character.Race["Sub-Race"] = "None"
     }
   } else {
-    character.Race["Sub-Race"] = "None";
+    character.Race["Sub-Race"] = "None"
   }
-  return true;
 }
-function addTrait(name) {
-  var t_req = request('GET', generateEndpoint('/traits'));
-  var t_res = JSON.parse(t_req.body);
-  console.log("Looking for trait: " + name);
-  var url_num = false;
-  var trait = {};
-  for(var i = 0; i < t_res.results.length; i ++){
-    if(t_res.results[i].name.includes(name)){
-      var t_str = t_res.results[i].url;
-      if(i > 8) {
-        var a = t_str.charAt(t_str.length-2);
-        var b = t_str.charAt(t_str.length-1);
-        url_num =("" + a + b);
-      } else {
-        url_num = t_str.charAt(t_str.length-1);
+function getSubRace(subrace_name){
+  var num = 0;
+  console.log("Looking for subrace: " + subrace_name)
+  for(var s = 0; s < subraces.length; s++){
+    if(subraces[s].name === subrace_name){
+      num = s;
+      console.log("Found subrace name: " + subrace_name + " = " + subraces[num].name);
+      character.Race["Sub-Race"] = subraces[num].name;
+      character["Ability Scores"].Strength += subraces[num].ability_bonuses[0];
+      character["Ability Scores"].Dexterity += subraces[num].ability_bonuses[1];
+      character["Ability Scores"].Constitution += subraces[num].ability_bonuses[2];
+      character["Ability Scores"].Intelligence += subraces[num].ability_bonuses[3];
+      character["Ability Scores"].Wisdom += subraces[num].ability_bonuses[4];
+      character["Ability Scores"].Charisma += subraces[num].ability_bonuses[5];
+
+      if(subraces[num].starting_proficiencies) {
+        for(var i = 0; i < subraces[num].starting_proficiencies.length; i++){
+          var p = subraces[num].starting_proficiencies[i];
+          character.Proficiencies.push(p);
+        }
+      }
+      if(subraces[num].traits) {
+        for(var i = 0; i < subraces[num].traits.length; i++){
+          var trait = subraces[num].traits[i];
+          if(trait == "choose_one"){
+            trait = subraces[num].traits[i].choose_one[utils.getRandomInt(0, subraces[num].traits[i].choose_one.length)]
+          }
+          character.Race["Special Abilities"].push(trait);
+        }
+      }
+      if(subraces[num].skill_bonuses) {
+        for(var i = 0; i < subraces[num].skill_bonuses.length; i++){
+          var b = subraces[num].skill_bonuses[i];
+          skill_bonuses.push(b);
+        }
+      }
+      if(subraces[num].languages){
+        for(var i = 0; i < subraces[num].languages.length; i++){
+          character.Languages.push(subraces[num].languages[i]);
+        }
+      }
+      if(subraces[num].additional_languages){
+        if(subraces[num].additional_languages.number == 1){
+          character.Languages.push(subraces[num].additional_languages.languages[utils.getRandomInt(0,subraces[num].additional_languages.languages.length)])
+        }
       }
       break;
     }
   }
-
-  if(url_num) {
-    trait = getTrait(url_num);
-    character.Race["Special Abilities"].push(trait);
-  } else {
-    console.log("Unable to find trait: " + name);
-  }
-  return true;
 }
-function getTrait(num){
-  var t_d_req = request('GET', generateEndpoint('/traits/' + num));
-  var t_d_res = JSON.parse(t_d_req.body);
-  var t_n = t_d_res.name;
-  var t_d = t_d_res.desc[0];
-  var trait = {
-    "Name": t_n,
-    "Description": t_d
-  };
-  return trait;
-}
-function getBackground(){
+function chooseBackground(){
   var background_choice = utils.getRandomInt(0, backgrounds.length);
   for(var j = 0; j < backgrounds[background_choice].Bonuses.length; j++) {
     var b = backgrounds[background_choice].Bonuses[j];
-    addBonus(b);
+    skill_bonuses.push(b);
   }
   character.Background.Name = backgrounds[background_choice].Name;
   character.Background.Description = backgrounds[background_choice].Description;
@@ -231,20 +210,43 @@ function getSkills(){
   calculateBonuses();
 }
 function calculateBonuses(){
+  // once the class bonuses have been added to the array remove duplicates and then add each skills prof modifier
   console.log("Bonuses: " + skill_bonuses);
 }
-function addBonus(bonus){
-  if(bonus.includes("Skill:")){
-    bonus = bonus.slice(7);
-    skill_bonuses.push(bonus);
-  } else {
-    character.Proficiencies.push(bonus);
+
+function getRandomProficiencies(){
+  var arr = [
+    "Acrobatics",
+    "Animal Handling",
+    "Aracana",
+    "Athletics",
+    "Deception",
+    "History",
+    "Insight",
+    "Intimidation",
+    "Investigation",
+    "Medicine",
+    "Nature",
+    "Perception",
+    "Performance",
+    "Persuasion",
+    "Religion",
+    "Sleight Of Hand",
+    "Stealth",
+    "Survival"
+  ]
+  for(var p = 0; p < 2; p++){
+    var n = getRandomInt(0,arr.length)
+    b = arr[n]
+    skill_bonuses.push(b)
+    arr.splice(n, 1);
   }
 }
 
 
 function resetCharacter(){
   character = reset;
+  skill_bonuses = []
   character.Race["Special Abilities"] = []
   character["Ability Scores"].Strength = 0;
   character["Ability Scores"].Dexterity = 0;
