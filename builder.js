@@ -2,7 +2,6 @@ var exports = module.exports = {};
 var request = require('sync-request');
 var utils = require('./utils.js');
 var character = require('./character.js');
-var reset = require('./charTemplate.js');
 var names = require('./Library/names.js');
 var races = require('./Library/races.js');
 var subraces = require('./Library/subraces.js');
@@ -22,32 +21,41 @@ function generateEndpoint(path, param) {
 // variables
 var skill_bonuses = [];
 var save_proficiencies = [];
+var tool_proficiencies = [];
+var starting_equipment = [];
+var reset = character;
 
 exports.CreateChar = function(){
-  console.log("-----------------------------------------");
-  console.log("----------- Creating new character ------");
+  console.log("----------------------------------------------------------------------------------");
+  console.log("---------------------------------------------------- Creating new character ------");
   resetCharacter();
-  console.log("----------- Rolling Stats ---------------");
+  console.log("---------------------------------------------------- Rolling Stats ---------------");
   rollStats();
-  console.log("----------- Choosing Alignment ----------");
+  console.log("---------------------------------------------------- Choosing Alignment ----------");
   chooseAlignment();
-  console.log("----------- Choosing Background ---------");
-  chooseBackground();
-  console.log("----------- Choosing Race ---------------");
+  console.log("---------------------------------------------------- Choosing Race ---------------");
   chooseRace();
-  console.log("----------- Choosing Class --------------");
+  console.log("---------------------------------------------------- Choosing Class --------------");
   chooseClass();
-  console.log("----------- Choosing Appearance ---------");
+  console.log("---------------------------------------------------- Choosing Background ---------");
+  chooseBackground();
+  console.log("---------------------------------------------------- Choosing Appearance ---------");
   chooseAppearance();
-  console.log("----------- Calculating Skills ----------");
+  console.log("---------------------------------------------------- Calculating Skills ----------");
   getSkills();
-  console.log("----------- Calculating Proficiencies ---");
+  console.log("---------------------------------------------------- Calculating Proficiencies ---");
   calculateProficiencyBonuses();
-  console.log("----------- Calculating Saves -----------");
+  console.log("---------------------------------------------------- Calculating Saves -----------");
   getSavingThrows();
-  console.log("----------- Calculating Health ----------");
+  console.log("---------------------------------------------------- Calculating Health ----------");
   getHealth();
-  console.log("-----------------------------------------");
+  console.log("---------------------------------------------------- Equipping Items -------------");
+  addStartingEquipment();
+  console.log("---------------------------------------------------- Adding Gold -----------------");
+  calculateStartingGold();
+  console.log("---------------------------------------------------- Learning Tools --------------");
+  addToolProficiencies()
+  console.log("----------------------------------------------------------------------------------");
   return character;
 };
 
@@ -75,6 +83,7 @@ function chooseAlignment(){
 function chooseRace(race){
   var num = utils.getRandomInt(0, races.length);
   character.Race.Race = races[num].name
+  console.log("Race chosen: " + races[num].name);
   chooseName(races[num].name);
   character.Race.Description = races[num].description
   character.Appearance.Age = utils.getRandomInt(races[num].min_age, races[num].max_age) + " years old";
@@ -97,7 +106,7 @@ function chooseRace(race){
         var v_arr = [
           "Acrobatics",
           "Animal Handling",
-          "Aracana",
+          "Arcana",
           "Athletics",
           "Deception",
           "History",
@@ -125,7 +134,7 @@ function chooseRace(race){
     for(var j = 0; j < races[num].skill_bonuses.length; j++) {
       var b = races[num].skill_bonuses[j];
       skill_bonuses.push(b);
-      console.log("Proficiency list updated from races: " + b)
+      //console.log("Proficiency list updated from races: " + b)
     }
   }
   if(races[num].additional_languages){
@@ -141,7 +150,7 @@ function chooseRace(race){
   }
   if(races[num].subraces.length){
     var odds = utils.getRandomInt(0, 2);
-    if(odds == 2){ // don't always get a subrace only do it 1/3 of the time
+    if(odds == 2 || races[num].name == "Dragonborn"){
       var s_num = utils.getRandomInt(0,races[num].subraces.length);
       var subrace_name = races[num].subraces[s_num];
       getSubRace(subrace_name);
@@ -186,7 +195,7 @@ function getSubRace(subrace_name){
         for(var i = 0; i < subraces[num].skill_bonuses.length; i++){
           var b = subraces[num].skill_bonuses[i];
           skill_bonuses.push(b);
-          console.log("Proficiency list updated from subraces: " + b)
+          //console.log("Proficiency list updated from subraces: " + b)
         }
       }
       if(subraces[num].languages){
@@ -205,28 +214,36 @@ function getSubRace(subrace_name){
 };
 function chooseBackground(){
   var background_choice = utils.getRandomInt(0, backgrounds.length);
-  for(var j = 0; j < backgrounds[background_choice].Bonuses.length; j++) {
-    var b = backgrounds[background_choice].Bonuses[j];
+  for(var j = 0; j < backgrounds[background_choice].bonuses.length; j++) {
+    var b = backgrounds[background_choice].bonuses[j];
     skill_bonuses.push(b);
-    console.log("Proficiency list updated from background: " + b)
+    //console.log("Proficiency list updated from background: " + b)
   }
-  character.Background.Name = backgrounds[background_choice].Name;
-  character.Background.Description = backgrounds[background_choice].Description;
-  character.Personality["Personality Trait"] = backgrounds[background_choice]["Personality Trait"][utils.rollDie(1, 8)];
-  character.Personality.Ideals = backgrounds[background_choice].Ideals[utils.rollDie(1, 6)];
-  character.Personality.Bond = backgrounds[background_choice].Bond[utils.rollDie(1, 6)];
-  character.Personality.Flaws = backgrounds[background_choice].Flaws[utils.rollDie(1, 6)];
+  for(var e = 0; e < backgrounds[background_choice].starting_equipment.length; e++){
+    var item = backgrounds[background_choice].starting_equipment[e]
+    addEquipment(item);
+  };
+
+  character.Background.Name = backgrounds[background_choice].name;
+  console.log("Background chosen: " + backgrounds[background_choice].name)
+  character.Background.Description = backgrounds[background_choice].description;
+  character["Background Feature"] = backgrounds[background_choice].feature;
+  character.Personality["Personality Trait"] = backgrounds[background_choice].personality_trait[utils.rollDie(1, 8)];
+  character.Personality.Ideals = backgrounds[background_choice].ideals[utils.rollDie(1, 6)];
+  character.Personality.Bond = backgrounds[background_choice].bond[utils.rollDie(1, 6)];
+  character.Personality.Flaws = backgrounds[background_choice].flaws[utils.rollDie(1, 6)];
 };
 function chooseClass(){
   var num = utils.getRandomInt(0, classes.length);
   character.Class.Class = classes[num].name;
+  console.log("Class chosen: " + classes[num].name);
   character.Class.Description = classes[num].description;
   character.Class["Primary Ability"] = classes[num].primary_ability
   character.Stats["Hit Die"] = classes[num].hit_die;
   if(classes[num].proficiency_choices){
     var p_c = classes[num].proficiency_choices.how_many;
     var p_arr = classes[num].proficiency_choices.choices;
-    console.log("Adding proficiencies from class");
+    //console.log("Adding proficiencies from class");
     getRandomProficiencies(p_c, p_arr);
   };
   if(classes[num].traits.length){
@@ -235,12 +252,18 @@ function chooseClass(){
       character["Class Abilities"].push(trait);
     };
   };
+  if(classes[num].tool_proficiencies){
+    for(var t = 0; t < classes[num].tool_proficiencies.length; t++){
+      var tool = classes[num].tool_proficiencies[t]
+      addToolProficiency(tool);
+    }
+  }
   if(classes[num].choose_one){
     var c_trait = classes[num].choose_one[utils.getRandomInt(0, classes[num].choose_one.length)];
     character["Class Abilities"].push(c_trait);
   }
   for(var s = 0; s < classes[num].saving_throws.length; s++){
-    save_proficiencies.push(classes[num].saving_throws);
+    save_proficiencies.push(classes[num].saving_throws[s]);
   };
   if(classes[num].starting_proficiencies.length){
     for(var j = 0; j < classes[num].starting_proficiencies.length; j++) {
@@ -248,11 +271,11 @@ function chooseClass(){
       character.Proficiencies.push(p);
     }
   };
-  if(classes[num].spellcasting.Modifier){
+  if(classes[num].spellcasting.modifier){
     var mod = classes[num].spellcasting.modifier;
     character["Spell Casting"].Modifier = mod;
-    character["Spell Casting"]["Spell save DC"] = 8 + character.Stats["Proficieny Bonus"] + module.exports.CalculateModifer(getAbilityScore(mod));
-    character["Spell Casting"]["Spell attack modifier"] = character.Stats["Proficieny Bonus"] + module.exports.CalculateModifer(getAbilityScore(mod));
+    character["Spell Casting"]["Spell save DC"] = 8 + character.Stats["Proficiency Bonus"] + module.exports.CalculateModifer(getAbilityScore(mod));
+    character["Spell Casting"]["Spell attack modifier"] = character.Stats["Proficiency Bonus"] + module.exports.CalculateModifer(getAbilityScore(mod));
     character["Spell Casting"].Cantrips = classes[num].spellcasting.cantrips;
     character["Spell Casting"]["First level slots"] = classes[num].spellcasting.first_level_slots;
     character["Spell Casting"]["First level known"] = classes[num].spellcasting.first_level_known;
@@ -276,7 +299,7 @@ function getSubClass(num){
 function getSkills(){
   character.Skills.Acrobatics = module.exports.CalculateModifer(getAbilityScore("Dexterity"));
   character.Skills["Animal Handling"] = module.exports.CalculateModifer(getAbilityScore("Wisdom"));
-  character.Skills.Aracana = module.exports.CalculateModifer(getAbilityScore("Intelligence"));
+  character.Skills.Arcana = module.exports.CalculateModifer(getAbilityScore("Intelligence"));
   character.Skills.Athletics = module.exports.CalculateModifer(getAbilityScore("Strength"));
   character.Skills.Deception = module.exports.CalculateModifer(getAbilityScore("Charisma"));
   character.Skills.History = module.exports.CalculateModifer(getAbilityScore("Intelligence"));
@@ -296,8 +319,8 @@ function getSkills(){
 function calculateProficiencyBonuses(){
   for(var c = 0; c < skill_bonuses.length; c++){
     var skill_name = skill_bonuses[c];
-    console.log("Adding proficiency bonus for: " + skill_name);
-    character.Skills[skill_name] += character.Stats["Proficieny Bonus"];
+    //console.log("Adding proficiency bonus for: " + skill_name);
+    character.Skills[skill_name] += character.Stats["Proficiency Bonus"];
   }
 };
 function chooseAppearance(){
@@ -327,6 +350,7 @@ function getSavingThrows(){
   character["Saving Throws"].Charisma = module.exports.CalculateModifer(getAbilityScore("Charisma"));
   for(var s = 0; s < save_proficiencies.length; s++){
     var s_name = save_proficiencies[s];
+    //console.log("Adding Save Proficieny: " + s_name + ": " + character.Stats["Proficiency Bonus"]);
     character["Saving Throws"][s_name] += character.Stats["Proficiency Bonus"];
   }
 };
@@ -346,7 +370,7 @@ function getRandomProficiencies(number_to_pick, array_of_options){
   for(var k = 0; k < array_of_options.length; k++){
     for(var b = 0; b < skill_bonuses.length; b++){
       if(array_of_options[k] == skill_bonuses[b]){
-        console.log("Removing duplicate from list of options: " + array_of_options[k]);
+        //console.log("Removing duplicate from list of options: " + array_of_options[k]);
         array_of_options.splice(k, 1)
       }
     }
@@ -356,13 +380,44 @@ function getRandomProficiencies(number_to_pick, array_of_options){
       var choice = utils.getRandomInt(0, array_of_options.length);
       var b = array_of_options[choice]
       skill_bonuses.push(b)
-      console.log("Proficiency list updated from list of options: " + b)
+      //console.log("Proficiency list updated from list of options: " + b)
       array_of_options.splice(choice, 1);
   }
 };
 function getAbilityScore(ability){
   var score = character["Ability Scores"][ability];
   return score;
+};
+function addEquipment(item) {
+  for(var i = 0; i < starting_equipment.length; i++){
+    if(item == starting_equipment[i]){
+      starting_equipment.splice(i, 1);
+    }
+  }
+  starting_equipment.push(item);
+}
+function addStartingEquipment(){
+  for(var e = 0; e < starting_equipment.length; e++){
+    character["Starting Equipment"].push(starting_equipment[e]);
+  }
+}
+function addToolProficiency(tool) {
+  for(var i = 0; i < tool_proficiencies.length; i++){
+    if(tool == tool_proficiencies[i]){
+      tool_proficiencies.splice(i, 1);
+    }
+  }
+  tool_proficiencies.push(tool);
+}
+function addToolProficiencies(){
+  for(var e = 0; e < tool_proficiencies.length; e++){
+    character["Tool Proficiencies"].push(tool_proficiencies[e]);
+  }
+}
+function calculateStartingGold(){
+  character.Money.Gold = utils.getRandomInt(60, 120); // £1
+  character.Money.Silver = utils.getRandomInt(0, 10); // 10p
+  character.Money.Copper = utils.getRandomInt(0, 10); // 1p
 };
 exports.CalculateModifer = function(ability_score){
   var mod = 0;
@@ -429,8 +484,8 @@ function resetCharacter(){
   character = reset;
   skill_bonuses = [];
   save_proficiencies = [];
-  character["Racial Abilities"] = [];
-  character["Class Abilities"] = [];
+  tool_proficiencies = [];
+  starting_equipment = [];
   character["Ability Scores"].Strength = 0;
   character["Ability Scores"].Dexterity = 0;
   character["Ability Scores"].Constitution = 0;
@@ -438,5 +493,11 @@ function resetCharacter(){
   character["Ability Scores"].Wisdom = 0;
   character["Ability Scores"].Charisma = 0;
   character.Proficiencies = [];
+  character["Tool Proficiencies"] = [];
   character.Languages = [];
+  character["Racial Abilities"] = [];
+  character["Class Abilities"] = [];
+  character["Background Feature"] = {};
+  character["Spell Casting"] = {};
+  character["Starting Equipment"] = [];
 };

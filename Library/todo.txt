@@ -1,3 +1,1 @@
-add features for backgrounds
-add starting equipment to backgrounds
-add starting equipment to classes
+add subclasses

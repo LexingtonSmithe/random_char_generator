@@ -1,13 +1,25 @@
 module.exports = [
   // acolyte
   {
-      "Name": "Acolyte",
-      "Description": "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine.You are not necessarily a cleric; performing sacred rites is not the same thing as channeling divine power. Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service.",
-      "Bonuses": [
+      "name": "Acolyte",
+      "description": "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine.You are not necessarily a cleric; performing sacred rites is not the same thing as channeling divine power. Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service.",
+      "bonuses": [
         "Insight",
         "Religion"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [],
+      "starting_equipment": [
+        "A holy symbol",
+        "A prayer book",
+        "5 sticks of incense",
+        "Vestments",
+        "A set of common clothes"
+      ],
+      "feature": {
+        "name": "Shelter of the Faithful",
+        "description": "As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle. You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple."
+      },
+      "personality_trait": {
         1: "You idolize a particular hero of your faith and constantly refer to that persons deeds and example",
         2: "You can find common ground between the fiercest enemies, empathizing with them and always working towards peace",
         3: "You see omens in every event and action. The gods try to speak to us, we just need to listen",
@@ -17,7 +29,7 @@ module.exports = [
         7: "You've enjoyed fine food, drink, and high society among my temple's elite. Rough living grates on you",
         8: "You've spent so long in the temple that you have little practical experience dealing with people in the outside world"
       },
-      "Ideals": {
+      "ideals": {
         1: "Tradition: The ancient traditions of worship and sacrifice must be preserved and upheld",
         2: "Charity: You always try to help those in need, no matter what the personal cost",
         3: "Change: We must help bring about the changes the gods are constantly working in the world",
@@ -25,7 +37,7 @@ module.exports = [
         5: "Faith: You trust that your deity will guide my actions, You have faith that if you work hard, things will go well",
         6: "Aspiration: You seek to prove myself worthy of your god's favor by matching your actions against his or her teachings"
       },
-      "Bond": {
+      "bond": {
         1: "You would die to recover an ancient relic of your faith that was lost long ago",
         2: "You will someday get revenge on the corrupt temple hierarchy who branded you a heretic",
         3: "You owe my life to the priest who took you in when my parents died",
@@ -33,7 +45,7 @@ module.exports = [
         5: "You will do anything to protect the temple where you served",
         6: "seek to preserve a sacred text that your enemies consider heretical and seek to destroy"
       },
-      "Flaws": {
+      "flaws": {
         1: "You judge others harshly, and yourself even more severely",
         2: "You put too much trust in those who wield power within your temple's hierarchy",
         3: "Your piety sometimes leads you to blindly trust those that profess faith in your god",
@@ -44,13 +56,28 @@ module.exports = [
     },
   // urchin
   {
-      "Name": "Urchin",
-      "Description": "You grew up on the streets alone, orphaned, and poor. You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You've survived despite all odds, and did so through cunning, strength, speed, or some combination of each. You begin your adventuring career with enough money to live modestly but securely for at least ten days. How did you come by that money? What allowed you to break free of your desperate circumstances and embark on a better life?",
-      "Bonuses": [
-        "Sleight of Hand",
+      "name": "Urchin",
+      "description": "You grew up on the streets alone, orphaned, and poor. You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You've survived despite all odds, and did so through cunning, strength, speed, or some combination of each. You begin your adventuring career with enough money to live modestly but securely for at least ten days. How did you come by that money? What allowed you to break free of your desperate circumstances and embark on a better life?",
+      "bonuses": [
+        "Sleight Of Hand",
         "Stealth"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "Disguise kit",
+        "Thieves tools"
+      ],
+      "starting_equipment": [
+        "Small knife",
+        "Map of the city you grew up in",
+        "Set of common clothes",
+        "Token to remember your parents by",
+        "Pet mouse"
+      ],
+      "feature": {
+        "name": "City Secrets",
+        "description": "You know the secret patterns and flow to cities and can find passages through the urban sprawl that others would miss. When you are not in combat, you (and companions you lead) can travel between any two locations in the city twice as fast as your speed would normally allow."
+      },
+      "personality_trait": {
         1: "You hide scraps of food and trinkets away in your pockets.",
         2: "You ask a lot of questions.",
         3: "You like to squeeze into small places where no one else can get to you.",
@@ -60,7 +87,7 @@ module.exports = [
         7: "You don't like to bathe.",
         8: "You bluntly say what other people are hinting at or hiding."
       },
-      "Ideals": {
+      "ideals": {
         1: "Respect. All people, rich or poor, deserve respect.",
         2: "Community. We have to take care of each other, because no one else is going to do it.",
         3: "Change. The low are lifted up, and the high and mighty are brought down. Change is the nature of things.",
@@ -68,7 +95,7 @@ module.exports = [
         5: "People. You help the people who help you — that's what keeps us alive.",
         6: "Aspiration. You're going to prove that you're worthy of a better life."
       },
-      "Bond": {
+      "bond": {
         1: "Your town or city is your home, and you'll fight to defend it.",
         2: "You sponsor an orphanage to keep others from enduring what you was forced to endure.",
         3: "You owe your survival to another urchin who taught you to live on the streets.",
@@ -76,7 +103,7 @@ module.exports = [
         5: "You escaped your life of poverty by robbing an important person, and you're wanted for it.",
         6: "No one else should have to endure the hardships you've been through."
       },
-      "Flaws": {
+      "flaws": {
         1: "If you're outnumbered, you will run away from a fight.",
         2: "Gold seems like a lot of money to you, and you'll do just about anything for more of it.",
         3: "You will never fully trust anyone other than yourself.",
@@ -85,15 +112,28 @@ module.exports = [
         6: "People who can't take care of themselves get what they deserve."
       }
   },
-  // sailor *
+  // sailor
   {
-      "Name": "Sailor",
-      "Description": "You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the distant line of the horizon, but the time has come to try your hand at something new. Discuss the nature of the ship you previously sailed with your Dungeon Master. Was it a merchant ship, a naval vessel, a ship of discovery, or a pirate ship? How famous (or infamous) is it? Is it widely traveled? Is it still sailing, or is it missing and presumed lost with all hands? What were your duties on board—boatswain, captain, navigator, cook, or some other position? Who were the captain and first mate? Did you leave your ship on good terms with your fellows, or on the run?",
-      "Bonuses": [
+      "name": "Sailor",
+      "description": "You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the distant line of the horizon, but the time has come to try your hand at something new. Discuss the nature of the ship you previously sailed with your Dungeon Master. Was it a merchant ship, a naval vessel, a ship of discovery, or a pirate ship? How famous (or infamous) is it? Is it widely traveled? Is it still sailing, or is it missing and presumed lost with all hands? What were your duties on board—boatswain, captain, navigator, cook, or some other position? Who were the captain and first mate? Did you leave your ship on good terms with your fellows, or on the run?",
+      "bonuses": [
         "Athletics",
         "Perception"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "Navigator’s tools",
+        "Vehicles (water)"
+      ],
+      "starting_equipment": [
+        "Silk rope - 50ft",
+        "Lucky charm",
+        "Set of common clothes"
+      ],
+      "feature": {
+        "name": "Ship's Passage",
+        "description": "When you need to, you can secure free passage on a sailing ship for yourself and your adventuring companions. You might sail on the ship you served on, or another ship you have good relations with (perhaps one captained by a former crewmate). Because you’re calling in a favor, you can’t be certain of a schedule or route that will meet your every need. Your Dungeon Master will determine how long it takes to get where you need to go. In return for your free passage, you and your companions are expected to assist the crew during the voyage."
+      },
+      "personality_trait": {
         1: "You're friends know they can rely on you, no matter what.",
         2: "You work hard so that you can play hard when the work is done.",
         3: "You enjoy sailing into new ports and making new friends over a flagon of ale.",
@@ -103,7 +143,7 @@ module.exports = [
         7: "You're language is as foul as an otyugh nest.",
         8: "You like a job well done, especially if you can convince someone else to do it."
       },
-      "Ideals": {
+      "ideals": {
         1: "Respect. The thing that keeps a ship together is mutual respect between captain and crew.",
         2: "Fairness. We all do the work, so we all share in the rewards.",
         3: "Freedom. The sea is freedom—the freedom to go anywhere and do anything.",
@@ -111,7 +151,7 @@ module.exports = [
         5: "People. You're committed to your crewmates, not to ideals.",
         6: "Aspiration. Someday you'll own your own ship and chart your own destiny."
       },
-      "Bond": {
+      "bond": {
         1: "You're loyal to your captain first, everything else second.",
         2: "The ship is most important—crewmates and captains come and go.",
         3: "You'll always remember your first ship.",
@@ -119,7 +159,7 @@ module.exports = [
         5: "You were cheated out of your fair share of the profits, and you want to get your due.",
         6: "Ruthless pirates murdered your captain and crewmates, plundered your ship, and left you to die. Vengeance will be yours."
       },
-      "Flaws": {
+      "flaws": {
         1: "You follow orders, even if you think they’re wrong.",
         2: "You’ll say anything to avoid having to do extra work.",
         3: "Once someone questions your courage, you never back down no matter how dangerous the situation.",
@@ -130,17 +170,26 @@ module.exports = [
   },
   // sailor - varient on sailor
   {
-      "Name": "Pirate",
-      "Description": "You spent your youth under the sway of a dread pirate, a ruthless cutthroat who taught you how to survive in a world of sharks and savages. You’ve indulged in larceny on the high seas and sent more than one deserving soul to a briny grave. Fear and bloodshed are no strangers to you, and you’ve garnered a somewhat unsavory reputation in many a port town.",
-      "Feature": {
-        "name": "Bad Reputation",
-        "description": ""
-      },
-      "Bonuses": [
+      "name": "Pirate",
+      "description": "You spent your youth under the sway of a dread pirate, a ruthless cutthroat who taught you how to survive in a world of sharks and savages. You’ve indulged in larceny on the high seas and sent more than one deserving soul to a briny grave. Fear and bloodshed are no strangers to you, and you’ve garnered a somewhat unsavory reputation in many a port town.",
+      "bonuses": [
         "Athletics",
         "Perception"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "Navigator’s tools",
+        "Vehicles (water)"
+      ],
+      "starting_equipment": [
+        "Silk rope - 50ft",
+        "Lucky charm",
+        "Set of common clothes"
+      ],
+      "feature": {
+        "name": "Bad Reputation",
+        "description": "If your character has a sailor background, you may select this background feature instead of Ship’s Passage. No matter where you go, people are afraid of you due to your reputation. When you are in a civilized settlement, you can get away with minor criminal offenses, such as refusing to pay for food at a tavern or breaking down doors at a local shop, since most people will not report your activity to the authorities."
+      },
+      "personality_trait": {
         1: "You're friends know they can rely on you, no matter what.",
         2: "You work hard so that you can play hard when the work is done.",
         3: "You enjoy sailing into new ports and making new friends over a flagon of ale.",
@@ -150,7 +199,7 @@ module.exports = [
         7: "You're language is as foul as an otyugh nest.",
         8: "You like a job well done, especially if you can convince someone else to do it."
       },
-      "Ideals": {
+      "ideals": {
         1: "Respect. The thing that keeps a ship together is mutual respect between captain and crew.",
         2: "Fairness. We all do the work, so we all share in the rewards.",
         3: "Freedom. The sea is freedom—the freedom to go anywhere and do anything.",
@@ -158,7 +207,7 @@ module.exports = [
         5: "People. You're committed to your crewmates, not to ideals.",
         6: "Aspiration. Someday you'll own your own ship and chart your own destiny."
       },
-      "Bond": {
+      "bond": {
         1: "You're loyal to your captain first, everything else second.",
         2: "The ship is most important—crewmates and captains come and go.",
         3: "You'll always remember your first ship.",
@@ -166,7 +215,7 @@ module.exports = [
         5: "You were cheated out of your fair share of the profits, and you want to get your due.",
         6: "Ruthless pirates murdered your captain and crewmates, plundered your ship, and left you to die. Vengeance will be yours."
       },
-      "Flaws": {
+      "flaws": {
         1: "You follow orders, even if you think they’re wrong.",
         2: "You’ll say anything to avoid having to do extra work.",
         3: "Once someone questions your courage, you never back down no matter how dangerous the situation.",
@@ -177,13 +226,23 @@ module.exports = [
   },
   // sage
   {
-      "Name": "Sage",
-      "Description": "You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study.",
-      "Bonuses": [
+      "name": "Sage",
+      "description": "You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study.",
+      "bonuses": [
         "Arcana",
         "History"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [],
+      "starting_equipment": [
+        "Small bottle of black ink, and a quill",
+        "Letter from a dead colleague posing a question you have not yet been able to answer",
+        "Set of common clothes"
+      ],
+      "feature": {
+        "name": "Researcher",
+        "description": "When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person or creature. Your DM might rule that the knowledge you seek is secreted away in an almost inaccessible place, or that it simply cannot be found. Unearthing the deepest secrets of the multiverse can require an adventure or even a whole campaign."
+      },
+      "personality_trait": {
         1: "You use polysyllabic words that convey the impression of great erudition.",
         2: "You've read every book in the world’s greatest libraries—or you like to boast that you have.",
         3: "You're used to helping out those who aren’t as smart as you are, and you patiently explain anything and everything to others.",
@@ -193,7 +252,7 @@ module.exports = [
         7: "You are horribly, horribly awkward in social situations.",
         8: "You're convinced that people are always trying to steal your secrets."
       },
-      "Ideals": {
+      "ideals": {
         1: "Knowledge. The path to power and self-improvement is through knowledge.",
         2: "Beauty. What is beautiful points us beyond itself toward what is true. ",
         3: "Logic. Emotions must not cloud our logical thinking.",
@@ -201,7 +260,7 @@ module.exports = [
         5: "Power. Knowledge is the path to power and domination.",
         6: "Self-Improvement. The goal of a life of study is the betterment of oneself."
       },
-      "Bond": {
+      "bond": {
         1: "It is your duty to protect your students.",
         2: "You have an ancient text that holds terrible secrets that must not fall into the wrong hands.",
         3: "You work to preserve a library, university, scriptorium, or monastery.",
@@ -209,7 +268,7 @@ module.exports = [
         5: "You've been searching your whole life for the answer to a certain question.",
         6: "You sold you're soul for knowledge. You hope to do great deeds and win it back."
       },
-      "Flaws": {
+      "flaws": {
         1: "You are easily distracted by the promise of information.",
         2: "Most people scream and run when they see a demon. You stop and take notes on its anatomy.",
         3: "Unlocking an ancient mystery is worth the price of a civilization.",
@@ -220,99 +279,138 @@ module.exports = [
   },
   // criminal
   {
-      "Name": "Criminal",
-      "Description": "You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You’re far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society.",
-      "Bonuses": [
-        "Deception",
-        "Stealth"
-      ],
-      "Personality Trait": {
-        1: "You always have a plan for what to do when things go wrong.",
-        2: "You are always calm, no matter what the situation. You never raise your voice or let your emotions control you.",
-        3: "The first thing you do in a new place is note the locations of everything valuable-or where such things could be hidden.",
-        4: "You would rather make a new friend than a new enemy.",
-        5: "You are incredibly slow to trust. Those who seem the fairest often have the most to hide.",
-        6: "You don't pay attention to the risks in a situation. Never tell you the odds.",
-        7: "The best way to get you to do something is to tell you that you can't do it.",
-        8: "You blow up at the slightest insult."
-      },
-      "Ideals": {
-        1: "Honor. You don’t steal from others in the trade.",
-        2: "Freedom. Chains are meant to be broken, as are those who would forge them.",
-        3: "Charity. You steal from the wealthy so that you can help people in need. ",
-        4: "Greed. You will do whatever it takes to become wealthy.",
-        5: "People. You're loyal to your friends, not to any ideals, and everyone else can take a trip down the Styx for all you care.",
-        6: "Redemption. There’s a spark of good in everyone."
-      },
-      "Bond": {
-        1: "You're trying to pay off an old debt you owe to a generous benefactor.",
-        2: "You're ill-gotten gains go to support your family.",
-        3: "Something important was taken from you, and you aim to steal it back.",
-        4: "You will become the greatest thief that ever lived.",
-        5: "You're guilty of a terrible crime. You hope you can redeem yourself for it.",
-        6: "Someone you loved died because of a mistake you made. That will never happen again."
-      },
-      "Flaws": {
-        1: "When you see something valuable, you can’t think about anything but how to steal it.",
-        2: "When faced with a choice between money and your friends, you usually choose the money.",
-        3: "If there’s a plan, you’ll forget it. If you don’t forget it, you’ll ignore it.",
-        4: "You have a “tell” that reveals when you're lying.",
-        5: "You turn tail and run when things look bad.",
-        6: "An innocent person is in prison for a crime that you committed. You're okay with that."
-      }
+    "name": "Criminal",
+    "description": "You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You’re far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society.",
+    "bonuses": [
+      "Deception",
+      "Stealth"
+    ],
+    "tool_proficiencies": [
+      "One type of gaming set",
+      "Thieves tools"
+    ],
+    "starting_equipment": [
+      "Crowbar",
+      "Set of dark common clothes with hood"
+    ],
+    "feature": {
+      "name": "Criminal Contact",
+      "description": "You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals. You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you."
+    },
+    "personality_trait": {
+      1: "You always have a plan for what to do when things go wrong.",
+      2: "You are always calm, no matter what the situation. You never raise your voice or let your emotions control you.",
+      3: "The first thing you do in a new place is note the locations of everything valuable-or where such things could be hidden.",
+      4: "You would rather make a new friend than a new enemy.",
+      5: "You are incredibly slow to trust. Those who seem the fairest often have the most to hide.",
+      6: "You don't pay attention to the risks in a situation. Never tell you the odds.",
+      7: "The best way to get you to do something is to tell you that you can't do it.",
+      8: "You blow up at the slightest insult."
+    },
+    "ideals": {
+      1: "Honor. You don’t steal from others in the trade.",
+      2: "Freedom. Chains are meant to be broken, as are those who would forge them.",
+      3: "Charity. You steal from the wealthy so that you can help people in need. ",
+      4: "Greed. You will do whatever it takes to become wealthy.",
+      5: "People. You're loyal to your friends, not to any ideals, and everyone else can take a trip down the Styx for all you care.",
+      6: "Redemption. There’s a spark of good in everyone."
+    },
+    "bond": {
+      1: "You're trying to pay off an old debt you owe to a generous benefactor.",
+      2: "You're ill-gotten gains go to support your family.",
+      3: "Something important was taken from you, and you aim to steal it back.",
+      4: "You will become the greatest thief that ever lived.",
+      5: "You're guilty of a terrible crime. You hope you can redeem yourself for it.",
+      6: "Someone you loved died because of a mistake you made. That will never happen again."
+    },
+    "flaws": {
+      1: "When you see something valuable, you can’t think about anything but how to steal it.",
+      2: "When faced with a choice between money and your friends, you usually choose the money.",
+      3: "If there’s a plan, you’ll forget it. If you don’t forget it, you’ll ignore it.",
+      4: "You have a “tell” that reveals when you're lying.",
+      5: "You turn tail and run when things look bad.",
+      6: "An innocent person is in prison for a crime that you committed. You're okay with that."
+    }
   },
   // spy - variant on criminal
   {
-      "Name": "Spy",
-      "Description": "Although your capabilities are not much different from those of a burglar or smuggler, you learned and practiced them in a very different context: as an espionage agent. You might have been an officially sanctioned agent of the crown, or perhaps you sold the secrets you uncovered to the highest bidder",
-      "Bonuses": [
-        "Deception",
-        "Stealth"
-      ],
-      "Personality Trait": {
-        1: "You always have a plan for what to do when things go wrong.",
-        2: "You are always calm, no matter what the situation. You never raise your voice or let your emotions control yours.",
-        3: "The first thing I do in a new place is note the locations of everything valuable-or where such things could be hidden.",
-        4: "You would rather make a new friend than a new enemy.",
-        5: "You are incredibly slow to trust. Those who seem the fairest often have the most to hide.",
-        6: "You don't pay attention to the risks in a situation. Never tell you the odds.",
-        7: "The best way to get you to do something is to tell you that you can't do it.",
-        8: "You blow up at the slightest insult."
-      },
-      "Ideals": {
-        1: "Honor. You don’t steal from others in the trade.",
-        2: "Freedom. Chains are meant to be broken, as are those who would forge them.",
-        3: "Charity. You steal from the wealthy so that you can help people in need.",
-        4: "Greed. You will do whatever it takes to become wealthy.",
-        5: "People. You're loyal to your friends, not to any ideals, and everyone else can take a trip down the Styx for all you care.",
-        6: "Redemption. There’s a spark of good in everyone."
-      },
-      "Bond": {
-        1: "You're trying to pay off an old debt you owe to a generous benefactor.",
-        2: "Your ill-gotten gains go to support your family.",
-        3: "Something important was taken from you, and you aim to steal it back.",
-        4: "You will become the greatest thief that ever lived.",
-        5: "You're guilty of a terrible crime. You hope you can redeem myself for it.",
-        6: "Someone you loved died because of a mistake you made. That will never happen again."
-      },
-      "Flaws": {
-        1: "When you see something valuable, you can’t think about anything but how to steal it.",
-        2: "When faced with a choice between money and your friends, you usually choose the money.",
-        3: "If there’s a plan, you’ll forget it. If you don’t forget it, you’ll ignore it.",
-        4: "You have a “tell” that reveals when you're lying.",
-        5: "You turn tail and run when things look bad.",
-        6: "An innocent person is in prison for a crime that you committed. You're okay with that."
-      }
+    "name": "Spy",
+    "description": "Although your capabilities are not much different from those of a burglar or smuggler, you learned and practiced them in a very different context: as an espionage agent. You might have been an officially sanctioned agent of the crown, or perhaps you sold the secrets you uncovered to the highest bidder",
+    "bonuses": [
+      "Deception",
+      "Stealth"
+    ],
+    "tool_proficiencies": [
+      "One type of gaming set",
+      "Thieves tools"
+    ],
+    "starting_equipment": [
+      "Crowbar",
+      "Set of dark common clothes with hood"
+    ],
+    "feature": {
+      "name": "Special Contact",
+      "description": "You have a reliable and trustworthy contact who acts as your liaison to a network of other spies. You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you."
+    },
+    "personality_trait": {
+      1: "You always have a plan for what to do when things go wrong.",
+      2: "You are always calm, no matter what the situation. You never raise your voice or let your emotions control yours.",
+      3: "The first thing I do in a new place is note the locations of everything valuable-or where such things could be hidden.",
+      4: "You would rather make a new friend than a new enemy.",
+      5: "You are incredibly slow to trust. Those who seem the fairest often have the most to hide.",
+      6: "You don't pay attention to the risks in a situation. Never tell you the odds.",
+      7: "The best way to get you to do something is to tell you that you can't do it.",
+      8: "You blow up at the slightest insult."
+    },
+    "ideals": {
+      1: "Honor. You don’t steal from others in the trade.",
+      2: "Freedom. Chains are meant to be broken, as are those who would forge them.",
+      3: "Charity. You steal from the wealthy so that you can help people in need.",
+      4: "Greed. You will do whatever it takes to become wealthy.",
+      5: "People. You're loyal to your friends, not to any ideals, and everyone else can take a trip down the Styx for all you care.",
+      6: "Redemption. There’s a spark of good in everyone."
+    },
+    "bond": {
+      1: "You're trying to pay off an old debt you owe to a generous benefactor.",
+      2: "Your ill-gotten gains go to support your family.",
+      3: "Something important was taken from you, and you aim to steal it back.",
+      4: "You will become the greatest thief that ever lived.",
+      5: "You're guilty of a terrible crime. You hope you can redeem myself for it.",
+      6: "Someone you loved died because of a mistake you made. That will never happen again."
+    },
+    "flaws": {
+      1: "When you see something valuable, you can’t think about anything but how to steal it.",
+      2: "When faced with a choice between money and your friends, you usually choose the money.",
+      3: "If there’s a plan, you’ll forget it. If you don’t forget it, you’ll ignore it.",
+      4: "You have a “tell” that reveals when you're lying.",
+      5: "You turn tail and run when things look bad.",
+      6: "An innocent person is in prison for a crime that you committed. You're okay with that."
+    }
   },
   // soldier
   {
-      "Name": "Soldier",
-      "Description": "War has been your life for as long as you care to remember. You trained as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive on the battlefield. You might have been part of a standing national army or a mercenary company, or perhaps a member of a local militia who rose to prominence during a recent war. When you choose this background, work with your DM to determine which military organization you were a part of, how far through its ranks you progressed, and what kind of experiences you had during your military career. Was it a standing army, a town guard, or a village militia? Or it might have been a noble’s or merchant’s private army, or a mercenary company.",
-      "Bonuses": [
+      "name": "Soldier",
+      "description": "War has been your life for as long as you care to remember. You trained as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive on the battlefield. You might have been part of a standing national army or a mercenary company, or perhaps a member of a local militia who rose to prominence during a recent war. When you choose this background, work with your DM to determine which military organization you were a part of, how far through its ranks you progressed, and what kind of experiences you had during your military career. Was it a standing army, a town guard, or a village militia? Or it might have been a noble’s or merchant’s private army, or a mercenary company.",
+      "bonuses": [
         "Athletics",
         "Intimidation"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "One type of gaming set",
+        "Vehicles (land)"
+      ],
+      "starting_equipment": [
+        "Insignia of rank",
+        "Trophy taken from a fallen enemy",
+        "Set of bone dice",
+        "Deck of cards",
+        "Set of common clothes"
+      ],
+      "feature": {
+        "name": "Military Rank",
+        "description": "You have a military rank from your career as a soldier. Soldiers loyal to your former military organization still recognize your authority and influence, and they defer to you if they are of a lower rank. You can invoke your rank to exert influence over other soldiers and requisition simple equipment or horses for temporary use. You can also usually gain access to friendly military encampments and fortresses where your rank is recognized."
+      },
+      "personality_trait": {
         1: "You're always polite and respectful.",
         2: "You're haunted by memories of war. You can’t get the images of violence out of your mind.",
         3: "You've lost too many friends, and you're slow to make new ones.",
@@ -322,7 +420,7 @@ module.exports = [
         7: "You have a crude sense of humor.",
         8: "You face problems head-on. A simple, direct solution is the best path to success."
       },
-      "Ideals": {
+      "ideals": {
         1: "Greater Good. Our lot is to lay down our lives in defense of others.",
         2: "Responsibility. You do what you must and obey just authority.",
         3: "Independence. When people follow orders blindly, they embrace a kind of tyranny.",
@@ -330,7 +428,7 @@ module.exports = [
         5: "Live and Let Live. Ideals aren’t worth killing over or going to war for.",
         6: "Nation. Your city, nation, or people are all that matter."
       },
-      "Bond": {
+      "bond": {
         1: "You would still lay down my life for the people you served with.",
         2: "Someone saved your life on the battlefield. To this day, you will never leave a friend behind.",
         3: "Your honor is your life.",
@@ -338,7 +436,7 @@ module.exports = [
         5: "Those who fight beside you are those worth dying for.",
         6: "You fight for those who cannot fight for themselves."
       },
-      "Flaws": {
+      "flaws": {
         1: "The monstrous enemy we faced in battle still leaves you quivering with fear.",
         2: "You have little respect for anyone who is not a proven warrior.",
         3: "You made a terrible mistake in battle that cost many lives—and you would do anything to keep that mistake secret.",
@@ -349,13 +447,25 @@ module.exports = [
   },
   // noble
   {
-      "Name": "Noble",
-      "Description": "You understand wealth, power, and privilege. You carry a noble title, and your family owns land, collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar with work or discomfort, a former merchant just elevated to the nobility, or a disinherited scoundrel with a disproportionate sense of entitlement. Or you could be an honest, hard-working landowner who cares deeply about the people who live and work on your land, keenly aware of your responsibility to them. Work with your DM to come up with an appropriate title and determine how much authority that title carries. A noble title doesn’t stand on its own—it’s connected to an entire family, and whatever title you hold, you will pass it down to your own children. Not only do you need to determine your noble title, but you should also work with the DM to describe your family and their influence on you. Is your family old and established, or was your title only recently bestowed? How much influence do they wield, and over what area? What kind of reputation does your family have among the other aristocrats of the region? How do the common people regard them? What’s your position in the family? Are you the heir to the head of the family? Have you already inherited the title? How do you feel about that responsibility? Or are you so far down the line of inheritance that no one cares what you do, as long as you don’t embarrass the family? How does the head of your family feel about your adventuring career? Are you in your family’s good graces, or shunned by the rest of your family? Does your family have a coat of arms? An insignia you might wear on a signet ring? Particular colors you wear all the time? An animal you regard as a symbol of your line or even a spiritual member of the family? These details help establish your family and your title as features of the world of the campaign.",
-      "Bonuses": [
+      "name": "Noble",
+      "description": "You understand wealth, power, and privilege. You carry a noble title, and your family owns land, collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar with work or discomfort, a former merchant just elevated to the nobility, or a disinherited scoundrel with a disproportionate sense of entitlement. Or you could be an honest, hard-working landowner who cares deeply about the people who live and work on your land, keenly aware of your responsibility to them. Work with your DM to come up with an appropriate title and determine how much authority that title carries. A noble title doesn’t stand on its own—it’s connected to an entire family, and whatever title you hold, you will pass it down to your own children. Not only do you need to determine your noble title, but you should also work with the DM to describe your family and their influence on you. Is your family old and established, or was your title only recently bestowed? How much influence do they wield, and over what area? What kind of reputation does your family have among the other aristocrats of the region? How do the common people regard them? What’s your position in the family? Are you the heir to the head of the family? Have you already inherited the title? How do you feel about that responsibility? Or are you so far down the line of inheritance that no one cares what you do, as long as you don’t embarrass the family? How does the head of your family feel about your adventuring career? Are you in your family’s good graces, or shunned by the rest of your family? Does your family have a coat of arms? An insignia you might wear on a signet ring? Particular colors you wear all the time? An animal you regard as a symbol of your line or even a spiritual member of the family? These details help establish your family and your title as features of the world of the campaign.",
+      "bonuses": [
         "History",
         "Persuasion"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "One type of gaming set"
+      ],
+      "starting_equipment": [
+        "Signet ring",
+        "Scroll of pedigree",
+        "Set of fine clothes"
+      ],
+      "feature": {
+        "name": "Position of Privilege",
+        "description": "Thanks to your noble birth, people are inclined to think the best of you. You are welcome in high society, and people assume you have the right to be wherever you are. The common folk and merchants make every effort to accommodate you and avoid your displeasure, and other people of high birth treat you as a member of the same social sphere. You can secure an audience with a local noble if you need to."
+      },
+      "personality_trait": {
         1: "Your eloquent flattery makes everyone you talk to feel like the most wonderful and important person in the world.",
         2: "The common folk love you for your kindness and generosity.",
         3: "No one could doubt by looking at your regal bearing that you are a cut above the unwashed masses.",
@@ -365,7 +475,7 @@ module.exports = [
         7: "Your favor, once lost, is lost forever.",
         8: "If anyone does you an injury, you will crush them, ruin their name, and salt their fields."
       },
-      "Ideals": {
+      "ideals": {
         1: "Respect. Respect is due to you because of your position, but all people regardless of station deserve to be treated with dignity.",
         2: "Responsibility. It is your duty to respect the authority of those above you, just as those below you must respect yours.",
         3: "Independence. You must prove that you can handle yourself without the coddling of your family.",
@@ -373,7 +483,7 @@ module.exports = [
         5: "Family. Blood runs thicker than water.",
         6: "Noble Obligation. It is your duty to protect and care for the people beneath you."
       },
-      "Bond": {
+      "bond": {
         1: "You will face any challenge to win the approval of your family.",
         2: "Your house’s alliance with another noble family must be sustained at all costs.",
         3: "Nothing is more important than the other members of your family.",
@@ -381,7 +491,7 @@ module.exports = [
         5: "Your loyalty to your sovereign is unwavering.",
         6: "The common folk must see you as a hero of the people."
       },
-      "Flaws": {
+      "flaws": {
         1: "You secretly believe that everyone is beneath you.",
         2: "You hide a truly scandalous secret that could ruin your family forever.",
         3: "You too often hear veiled insults and threats in every word addressed to you, and you're quick to anger.",
@@ -392,13 +502,25 @@ module.exports = [
   },
   // knight - varient on noble
   {
-      "Name": "Knight",
-      "Description": "A knighthood is among the lowest noble titles in most societies, but it can be a path to higher status. If you wish to be a knight, choose the Retainers feature (see the sidebar) instead of the Position of Privilege feature. One of your commoner retainers is replaced by a noble who serves as your squire, aiding you in exchange for training on his or her own path to knighthood. Your two remaining retainers might include a groom to care for your horse and a servant who polishes your armor (and even helps you put it on). As an emblem of chivalry and the ideals of courtly love, you might include among your equipment a banner or other token from a noble lord or lady to whom you have given your heart—in a chaste sort of devotion (This person could be your bond).",
-      "Bonuses": [
+      "name": "Knight",
+      "description": "A knighthood is among the lowest noble titles in most societies, but it can be a path to higher status. If you wish to be a knight, choose the Retainers feature (see the sidebar) instead of the Position of Privilege feature. One of your commoner retainers is replaced by a noble who serves as your squire, aiding you in exchange for training on his or her own path to knighthood. Your two remaining retainers might include a groom to care for your horse and a servant who polishes your armor (and even helps you put it on). As an emblem of chivalry and the ideals of courtly love, you might include among your equipment a banner or other token from a noble lord or lady to whom you have given your heart—in a chaste sort of devotion (This person could be your bond).",
+      "bonuses": [
         "History",
         "Persuasion"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "One type of gaming set"
+      ],
+      "starting_equipment": [
+        "Signet ring",
+        "Scroll of pedigree",
+        "Set of fine clothes"
+      ],
+      "feature": {
+        "name": "Retainer",
+        "description": "You have the service of three retainers loyal to your family. These retainers can be attendants or messengers, one of them serves as your squire, aiding you in exchange for training on his or her own path to knighthood. Your retainers are commoners who can perform mundane tasks for you, but they do not fight for you, will not follow you into obviously dangerous areas (such as dungeons), and will leave if they are frequently endangered or abused."
+      },
+      "personality_trait": {
         1: "Your eloquent flattery makes everyone you talk to feel like the most wonderful and important person in the world.",
         2: "The common folk love you for your kindness and generosity.",
         3: "No one could doubt by looking at your regal bearing that you are a cut above the unwashed masses.",
@@ -408,7 +530,7 @@ module.exports = [
         7: "Your favor, once lost, is lost forever.",
         8: "If anyone does you an injury, you will crush them, ruin their name, and salt their fields."
       },
-      "Ideals": {
+      "ideals": {
         1: "Respect. Respect is due to you because of your position, but all people regardless of station deserve to be treated with dignity.",
         2: "Responsibility. It is your duty to respect the authority of those above you, just as those below you must respect yours.",
         3: "Independence. You must prove that you can handle yourself without the coddling of your family.",
@@ -416,7 +538,7 @@ module.exports = [
         5: "Family. Blood runs thicker than water.",
         6: "Noble Obligation. It is your duty to protect and care for the people beneath you."
       },
-      "Bond": {
+      "bond": {
         1: "You will face any challenge to win the approval of your family.",
         2: "Your house’s alliance with another noble family must be sustained at all costs.",
         3: "Nothing is more important than the other members of your family.",
@@ -424,7 +546,7 @@ module.exports = [
         5: "Your loyalty to your sovereign is unwavering.",
         6: "The common folk must see you as a hero of the people."
       },
-      "Flaws": {
+      "flaws": {
         1: "You secretly believe that everyone is beneath you.",
         2: "You hide a truly scandalous secret that could ruin your family forever.",
         3: "You too often hear veiled insults and threats in every word addressed to you, and you're quick to anger.",
@@ -435,13 +557,26 @@ module.exports = [
   },
   // outlander
   {
-      "Name": "Outlander",
-      "Description": "You grew up in the wilds, far from civilization and the comforts of town and technology. You’ve witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. The wilds are in your blood, whether you were a nomad, an explorer, a recluse, a hunter-gatherer, or even a marauder. Even in places where you don’t know the specific features of the terrain, you know the ways of the wild.",
-      "Bonuses": [
+      "name": "Outlander",
+      "description": "You grew up in the wilds, far from civilization and the comforts of town and technology. You’ve witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. The wilds are in your blood, whether you were a nomad, an explorer, a recluse, a hunter-gatherer, or even a marauder. Even in places where you don’t know the specific features of the terrain, you know the ways of the wild.",
+      "bonuses": [
         "Athletics",
         "Survival"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "One type of musical instrument"
+      ],
+      "starting_equipment": [
+        "Hunting trap",
+        "Walking staff",
+        "Animal pelt",
+        "Set of travellers clothes"
+      ],
+      "feature": {
+        "name": "Wanderer",
+        "description": "You have an excellent memory for maps and geography, and you can always recall the general layout of terrain, settlements, and other features around you. In addition, you can find food and fresh water for yourself and up to five other people each day, provided that the land offers berries, small game, water, and so forth."
+      },
+      "personality_trait": {
         1: "You're driven by a wanderlust that led you away from home.",
         2: "You watch over your friends as if they were a litter of newborn pups",
         3: "You once ran twenty-five miles without stopping to warn to your clan of an approaching orc horde. You’d do it again if you had to.",
@@ -451,7 +586,7 @@ module.exports = [
         7: "You feel far more comfortable around animals than people.",
         8: "You were, in fact, raised by wolves."
       },
-      "Ideals": {
+      "ideals": {
         1: "Change. Life is like the seasons, in constant change, and we must change with it.",
         2: "Greater Good. It is each person’s responsibility to make the most happiness for the whole tribe.",
         3: "Honor. If you dishonor yourself, you dishonor your whole clan.",
@@ -459,7 +594,7 @@ module.exports = [
         5: "Nature. The natural world is more important than all the constructs of civilization.",
         6: "Glory. You must earn glory in battle, for yourself and your clan."
       },
-      "Bond": {
+      "bond": {
         1: "Your family, clan, or tribe is the most important thing in your life, even when they are far from you.",
         2: "An injury to the unspoiled wilderness of your home is an injury to you.",
         3: "You will bring terrible wrath down on the evildoers who destroyed your homeland.",
@@ -467,7 +602,7 @@ module.exports = [
         5: "You suffer awful visions of a coming disaster and will do anything to prevent it.",
         6: "It is your duty to provide children to sustain my tribe."
       },
-      "Flaws": {
+      "flaws": {
         1: "You are too enamored of ale, wine, and other intoxicants.",
         2: "There’s no room for caution in a life lived to the fullest.",
         3: "You remember every insult you’ve received and nurse a silent resentment toward anyone who’s ever wronged you.",
@@ -478,13 +613,27 @@ module.exports = [
   },
   // charlatan
   {
-      "Name": "Charlatan",
-      "Description": "You have always had a way with people. You know what makes them tick, you can tease out their heart’s desires after a few minutes of conversation, and with a few leading questions you can read them like they were children's books. It’s a useful talent, and one that you’re perfectly willing to use for your advantage. You know what people want and you deliver, or rather, you promise to deliver. Common sense should steer people away from things that sound too good to be true, but common sense seems to be in short supply when you’re around. The bottle of pink coloured liquid will surely cure that unseemly rash, this ointment—nothing more than a bit of fat with a sprinkle of silver dust—can restore youth and vigor, and there’s a bridge in the city that just happens to be for sale. These marvels sound implausible, but you make them sound like the real deal.",
-      "Bonuses": [
+      "name": "Charlatan",
+      "description": "You have always had a way with people. You know what makes them tick, you can tease out their heart’s desires after a few minutes of conversation, and with a few leading questions you can read them like they were children's books. It’s a useful talent, and one that you’re perfectly willing to use for your advantage. You know what people want and you deliver, or rather, you promise to deliver. Common sense should steer people away from things that sound too good to be true, but common sense seems to be in short supply when you’re around. The bottle of pink coloured liquid will surely cure that unseemly rash, this ointment—nothing more than a bit of fat with a sprinkle of silver dust—can restore youth and vigor, and there’s a bridge in the city that just happens to be for sale. These marvels sound implausible, but you make them sound like the real deal.",
+      "bonuses": [
         "Deception",
-        "Sleight of Hand"
+        "Sleight Of Hand"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "Disguise Kit",
+        "Forgery Kit"
+      ],
+      "starting_equipment": [
+        "Disguise kit",
+        "Deck of marked cards",
+        "Loaded dice",
+        "Set of fine clothes"
+      ],
+      "feature": {
+        "name": "False Identity",
+        "description": "You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona. Additionally, you can forge documents including official papers and personal letters, as long as you have seen an example of the kind of document or the handwriting you are trying to copy."
+      },
+      "personality_trait": {
         1: "You fall in and out of love easily, and are always pursuing someone.",
         2: "You have a joke for every occasion, especially occasions where humor is inappropriate.",
         3: "Flattery is your preferred trick for getting what you want.",
@@ -494,7 +643,7 @@ module.exports = [
         7: "You keep multiple holy symbols on you and invoke whatever deity might come in useful at any given moment.",
         8: "You pocket anything you see that might have some value."
       },
-      "Ideals": {
+      "ideals": {
         1: "Independence. You are a free spirit— no one tells you what to do.",
         2: "Fairness. You never target people who can’t afford to lose a few coins.",
         3: "Charity. You distribute the money you acquire to the people who really need it.",
@@ -502,7 +651,7 @@ module.exports = [
         5: "Friendship. Material goods come and go. Bonds of friendship last forever.",
         6: "Aspiration. You're determined to make something of yourself."
       },
-      "Bond": {
+      "bond": {
         1: "You fleeced the wrong person and must work to ensure that this individual never crosses paths with you or those you care about.",
         2: "You owe everything to your mentor—a horrible person who’s probably rotting in jail somewhere.",
         3: "Somewhere out there, you have a child who doesn’t know me. You're making the world better for him or her.",
@@ -510,7 +659,7 @@ module.exports = [
         5: "A powerful person killed someone you love. Some day soon, you’ll have my revenge.",
         6: "You swindled and ruined a person who didn’t deserve it. You seek to atone for your misdeeds but might never be able to forgive yourself."
       },
-      "Flaws": {
+      "flaws": {
         1: "You can’t resist a pretty face.",
         2: "You're always in debt. You spend your ill-gotten gains on decadent luxuries faster than you bring them in.",
         3: "You're convinced that no one could ever fool me the way you fool others.",
@@ -519,15 +668,29 @@ module.exports = [
         6: "You hate to admit it and will hate yourself for it, but you'll run and preserve your own hide if the going gets tough."
       }
   },
-  // folk hero *
+  // folk hero
   {
-      "Name": "Folk Hero",
-      "Description": "You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere.",
-      "Bonuses": [
+      "name": "Folk Hero",
+      "description": "You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere.",
+      "bonuses": [
         "Animal Handling",
         "Survival"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "One type of artisans tools",
+        "Vehicles (land)"
+      ],
+      "starting_equipment": [
+        "Set of artisans tools",
+        "Shovel",
+        "Iron pot",
+        "Set of common clothes"
+      ],
+      "feature": {
+        "name": "Rustic Hospitality",
+        "description": "Since you come from the ranks of the common folk, you fit in among them with ease. You can find a place to hide, rest, or recuperate among other commoners, unless you have shown yourself to be a danger to them. They will shield you from the law or anyone else searching for you, though they will not risk their lives for you."
+      },
+      "personality_trait": {
         1: "You judge people by their actions, not their words.",
         2: "If someone is in trouble, you're always ready to lend help.",
         3: "When you set my mind to something, you follow through no matter what gets in your way.",
@@ -537,7 +700,7 @@ module.exports = [
         7: "You misuse long words in an attempt to sound smarter.",
         8: "You get bored easily. When are you going to get on with your destiny?"
       },
-      "Ideals": {
+      "ideals": {
         1: "Respect. People deserve to be treated with dignity and respect.",
         2: "Fairness. No one should get preferential treatment before the law, and no one is above the law.",
         3: "Freedom. Tyrants must not be allowed to oppress the people.",
@@ -545,7 +708,7 @@ module.exports = [
         5: "Sincerity. There’s no good in pretending to be something you're not.",
         6: "Destiny. Nothing and no one can steer you away from your higher calling."
       },
-      "Bond": {
+      "bond": {
         1: "You have a family, but you have no idea where they are. One day, you hope to see them again.",
         2: "You worked the land, you love the land, and you will protect the land.",
         3: "A proud noble once gave you a horrible beating, and you will take your revenge on any bully you encounter.",
@@ -553,7 +716,7 @@ module.exports = [
         5: "You protect those who cannot protect themselves.",
         6: "You wish your childhood sweetheart had come with you to pursue your destiny."
       },
-      "Flaws": {
+      "flaws": {
         1: "The tyrant who rules your land will stop at nothing to see you killed.",
         2: "You're convinced of the significance of your destiny, and blind to your shortcomings and the risk of failure.",
         3: "The people who knew you when you were young know your shameful secret, so you can never go home again.",
@@ -562,15 +725,29 @@ module.exports = [
         6: "You have trouble trusting in your allies."
       }
   },
-  // entertainer *
+  // entertainer
   {
-      "Name": "Entertainer",
-      "Description": "You thrive in front of an audience. You know how to entrance them, entertain them, and even inspire them. Your poetics can stir the hearts of those who hear you, awakening grief or joy, laughter or anger. Your music raises their spirits or captures their sorrow. Your dance steps captivate, your humour cuts to the quick. Whatever techniques you use, your art is your life.",
-      "Bonuses": [
+      "name": "Entertainer",
+      "description": "You thrive in front of an audience. You know how to entrance them, entertain them, and even inspire them. Your poetics can stir the hearts of those who hear you, awakening grief or joy, laughter or anger. Your music raises their spirits or captures their sorrow. Your dance steps captivate, your humour cuts to the quick. Whatever techniques you use, your art is your life.",
+      "bonuses": [
         "Acrobatics",
         "Performance"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "One type of musical instrument",
+        "Disguise kit"
+      ],
+      "starting_equipment": [
+        "Musical instrument",
+        "Admirers love letter",
+        "Costume",
+        "Set of common clothes"
+      ],
+      "feature": {
+        "name": "By Popular Demand",
+        "description": "You can always find a place to perform, usually in an inn or tavern but possibly with a circus, at a theater, or even in a noble’s court. At such a place, you receive free lodging and food of a modest or comfortable standard (depending on the quality of the establishment), as long as you perform each night. In addition, your performance makes you something of a local figure. When strangers recognize you in a town where you have performed, they typically take a liking to you."
+      },
+      "personality_trait": {
         1: "You know a story relevant to almost every situation.",
         2: "Whenever you come to a new place, you collect local rumors and spread gossip.",
         3: "You're a hopeless romantic, always searching for that 'special someone'.",
@@ -580,7 +757,7 @@ module.exports = [
         7: "You’ll settle for nothing less than perfection.",
         8: "You change your mood or your mind as quickly as you change key in a song."
       },
-      "Ideals": {
+      "ideals": {
         1: "Beauty. When you perform, you make the world better than it was.",
         2: "Tradition. The stories, legends, and songs of the past must never be forgotten, for they teach us who we are.",
         3: "Creativity. The world is in need of new ideas and bold action.",
@@ -588,7 +765,7 @@ module.exports = [
         5: "People. You like seeing the smiles on people’s faces when you perform. That’s all that matters.",
         6: "Honesty. Art should reflect the soul; it should come from within and reveal who we really are."
       },
-      "Bond": {
+      "bond": {
         1: "Your instrument is your most treasured possession, and it reminds you of someone you love.",
         2: "Someone stole your precious instrument, and someday you’ll get it back.",
         3: "You want to be famous, whatever it takes.",
@@ -596,7 +773,7 @@ module.exports = [
         5: "You will do anything to prove yourself superior to your hated rival.",
         6: "You would do anything for the other members of your old troupe."
       },
-      "Flaws": {
+      "flaws": {
         1: "You’ll do anything to win fame and renown.",
         2: "You're a sucker for a pretty face.",
         3: "A scandal prevents you from ever going home again. That kind of trouble seems to follow you around.",
@@ -605,15 +782,28 @@ module.exports = [
         6: "Despite your best efforts, you are unreliable to your friends."
       }
   },
-  // hermit *
+  // hermit
   {
-      "Name": "Hermit",
-      "Description": "You lived in seclusion—either in a sheltered community such as a monastery, or entirely alone—for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for.",
-      "Bonuses": [
+      "name": "Hermit",
+      "description": "You lived in seclusion—either in a sheltered community such as a monastery, or entirely alone—for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for.",
+      "bonuses": [
         "Medicine",
         "Religion"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "Herbalism kit"
+      ],
+      "starting_equipment": [
+        "A case of prayers",
+        "Winter blanket",
+        "Herbalism kit",
+        "Set of common clothes"
+      ],
+      "feature": {
+        "name": "Discovery",
+        "description": "The quiet seclusion of your extended hermitage gave you access to a unique and powerful discovery. The exact nature of this revelation depends on the nature of your seclusion. It might be a great truth about the cosmos, the deities, the powerful beings of the outer planes, or the forces of nature. It could be a site that no one else has ever seen. You might have uncovered a fact that has long been forgotten, or unearthed some relic of the past that could rewrite history. It might be information that would be damaging to the people who consigned you to exile, and hence the reason for your return to society. Work with your DM to determine the details of your discovery and its impact on the campaign."
+      },
+      "personality_trait": {
         1: "You've been isolated for so long that you rarely speak, preferring gestures and the occasional grunt.",
         2: "You are utterly serene, even in the face of disaster.",
         3: "The leader of your community had something wise to say on every topic, and you are eager to share that wisdom.",
@@ -623,7 +813,7 @@ module.exports = [
         7: "You often get lost in your own thoughts and contemplation, becoming oblivious to your surroundings.",
         8: "You are working on a grand philosophical theory and love sharing your ideas."
       },
-      "Ideals": {
+      "ideals": {
         1: "Greater Good. Your gifts are meant to be shared with all, not used for your own benefit.",
         2: "Logic. Emotions must not cloud our sense of what is right and true, or our logical thinking.",
         3: "Free Thinking. Inquiry and curiosity are the pillars of progress.",
@@ -631,7 +821,7 @@ module.exports = [
         5: "Live and Let Live. Meddling in the affairs of others only causes trouble.",
         6: "Self-Knowledge. If you know yourself, there’s nothing left to know."
       },
-      "Bond": {
+      "bond": {
         1: "Nothing is more important than the other members of your hermitage, order, or association.",
         2: "You entered seclusion to hide from the ones who might still be hunting you. You must someday confront them.",
         3: "You're still seeking the enlightenment you pursued in your seclusion, and it still eludes you.",
@@ -639,7 +829,7 @@ module.exports = [
         5: "Should your discovery come to light, it could bring ruin to the world.",
         6: "Your isolation gave you great insight into a great evil that only you can destroy."
       },
-      "Flaws": {
+      "flaws": {
         1: "Now that you've returned to the world, you enjoy its delights a little too much.",
         2: "You harbor dark, bloodthirsty thoughts that your isolation and meditation failed to quell.",
         3: "You are dogmatic in my thoughts and philosophy.",
@@ -650,13 +840,25 @@ module.exports = [
   },
   // guild artisan
   {
-      "Name": "Guild Artisan",
-      "Description": "You are a member of an artisan’s guild, skilled in a particular field and closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order. You learned your skills as an apprentice to a master artisan, under the sponsorship of your guild, until you became a master in your own right.",
-      "Bonuses": [
+      "name": "Guild Artisan",
+      "description": "You are a member of an artisan’s guild, skilled in a particular field and closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order. You learned your skills as an apprentice to a master artisan, under the sponsorship of your guild, until you became a master in your own right.",
+      "bonuses": [
         "Insight",
         "Persuasion"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "One type of artisans tools"
+      ],
+      "starting_equipment": [
+        "Set of artisans tools",
+        "Letter of introduction from your guild",
+        "Set of travellers clothes"
+      ],
+      "feature": {
+        "name": "Guild Membership",
+        "description": "As an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings. Guilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild’s coffers. You must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild’s good graces."
+      },
+      "personality_trait": {
         1: "You believe that anything worth doing is worth doing right. You can’t help it— you're a perfectionist.",
         2: "You're a snob who looks down on those who can’t appreciate fine art.",
         3: "You always want to know how things work and what makes people tick.",
@@ -666,7 +868,7 @@ module.exports = [
         7: "You don’t part with your money easily and will haggle tirelessly to get the best deal possible.",
         8: "You're well known for your work, and you want to make sure everyone appreciates it. You're always taken aback when people haven’t heard of you."
       },
-      "Ideals": {
+      "ideals": {
         1: "Community. It is the duty of all civilized people to strengthen the bonds of community and the security of civilization.",
         2: "Generosity. Your talents were given to you so that you could use them to benefit the world.",
         3: "Freedom. Everyone should be free to pursue his or her own livelihood.",
@@ -674,7 +876,7 @@ module.exports = [
         5: "People. You're committed to the people you care about, not to ideals.",
         6: "Aspiration. You work hard to be the best there is at your craft."
       },
-      "Bond": {
+      "bond": {
         1: "The workshop where you learned your trade is the most important place in the world to you.",
         2: "You created a great work for someone, and then found them unworthy to receive it. You're still looking for someone worthy.",
         3: "You owe your guild a great debt for forging you into the person you are today.",
@@ -682,7 +884,7 @@ module.exports = [
         5: "One day you will return to your guild and prove that you are the greatest artisan of them all.",
         6: "You will get revenge on the evil forces that destroyed your place of business and ruined your livelihood."
       },
-      "Flaws": {
+      "flaws": {
         1: "You’ll do anything to get your hands on something rare or priceless.",
         2: "You're quick to assume that someone is trying to cheat you.",
         3: "No one must ever learn that you once stole money from guild coffers.",
@@ -693,13 +895,25 @@ module.exports = [
   },
   // guild merchant - varient on artisan
   {
-      "Name": "Guild Merchant",
-      "Description": "You belong to a guild of traders, caravan masters, or shopkeepers. You don’t craft items yourself but earn a living by buying and selling the works of others (or the raw materials artisans need to practice their craft). Your guild might be a large merchant consortium (or family) with interests across the region. Perhaps you transported goods from one place to another, by ship, wagon, or caravan, or bought them from traveling traders and sold them in your own little shop. In some ways, the traveling merchant’s life lends itself to adventure far more than the life of an artisan. Rather than proficiency with artisan’s tools, you might be proficient with navigator’s tools or an additional language. And instead of artisan’s tools, you can start with a mule and a cart.",
-      "Bonuses": [
+      "name": "Guild Merchant",
+      "description": "You belong to a guild of traders, caravan masters, or shopkeepers. You don’t craft items yourself but earn a living by buying and selling the works of others (or the raw materials artisans need to practice their craft). Your guild might be a large merchant consortium (or family) with interests across the region. Perhaps you transported goods from one place to another, by ship, wagon, or caravan, or bought them from traveling traders and sold them in your own little shop. In some ways, the traveling merchant’s life lends itself to adventure far more than the life of an artisan. Rather than proficiency with artisan’s tools, you might be proficient with navigator’s tools or an additional language. And instead of artisan’s tools, you can start with a mule and a cart.",
+      "bonuses": [
         "Insight",
         "Persuasion"
       ],
-      "Personality Trait": {
+      "tool_proficiencies": [
+        "Navigators tools"
+      ],
+      "starting_equipment": [
+        "Merchants sigil",
+        "Letter of introduction from your guild",
+        "Set of travellers clothes"
+      ],
+      "feature": {
+        "name": "Guild Membership",
+        "description": "As an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings. Guilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild’s coffers. You must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild’s good graces."
+      },
+      "personality_trait": {
         1: "You believe that anything worth doing is worth doing right. You can’t help it— you're a perfectionist.",
         2: "You're a snob who looks down on those who can’t appreciate fine goods.",
         3: "You always want to know how things work and what makes people tick.",
@@ -709,7 +923,7 @@ module.exports = [
         7: "You don’t part with your money easily and will haggle tirelessly to get the best deal possible.",
         8: "You're well known for your work, and you want to make sure everyone appreciates it. You're always taken aback when people haven’t heard of you."
       },
-      "Ideals": {
+      "ideals": {
         1: "Community. It is the duty of all civilized people to strengthen the bonds of community and the security of civilization.",
         2: "Generosity. Your talents were given to you so that you could use them to benefit the world.",
         3: "Freedom. Everyone should be free to pursue his or her own livelihood.",
@@ -717,7 +931,7 @@ module.exports = [
         5: "People. You're committed to the people you care about, not to ideals.",
         6: "Aspiration. You work hard to be the best there is at your craft."
       },
-      "Bond": {
+      "bond": {
         1: "The workshop where you learned your trade is the most important place in the world to you.",
         2: "You bought a great work for someone, and then found them unworthy to receive it. You're still looking for someone worthy.",
         3: "You owe your guild a great debt for forging you into the person you are today.",
@@ -725,7 +939,7 @@ module.exports = [
         5: "One day you will return to your guild and prove that you are the greatest artisan of them all.",
         6: "You will get revenge on the evil forces that destroyed your place of business and ruined your livelihood."
       },
-      "Flaws": {
+      "flaws": {
         1: "You’ll do anything to get your hands on something rare or priceless.",
         2: "You're quick to assume that someone is trying to cheat you.",
         3: "No one must ever learn that you once stole money from guild coffers.",
@@ -734,5 +948,4 @@ module.exports = [
         6: "You're horribly jealous of anyone who can outshine your handiwork. Everywhere you go, you're surrounded by rivals."
       }
   }
-
 ]

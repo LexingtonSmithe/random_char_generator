@@ -2,7 +2,7 @@ module.exports = [
   // barbarian
   {
     "name": "Barbarian",
-    "description": "",
+    "description": "Unbridled, unquenchable, and unthinking fury. More than a mere emotion, their anger is the ferocity of a cornered predator, the unrelenting assault of a storm, the churning turmoil of the sea. For some, their rage springs from a communion with fierce animal spirits. Others draw from a roiling reservoir of anger at a world full of pain. For every barbarian, rage is a power that fuels not just a battle frenzy but also uncanny reflexes, resilience, and feats of strength.",
     "primary_ability": "Strength",
     "hit_die": 12,
     "starting_proficiencies": [
@@ -48,7 +48,7 @@ module.exports = [
   // bard
   {
     "name": "Bard",
-    "description": "",
+    "description": "Whether scholar, skald, or scoundrel, a bard weaves magic through words and music to inspire allies, demoralize foes, manipulate minds, create illusions, and even heal wounds.",
     "primary_ability": "Charisma",
     "hit_die": 8,
     "starting_proficiencies": [
@@ -82,6 +82,9 @@ module.exports = [
         "Survival",
       ]
     },
+    "tool_proficiencies": [
+      "One type of musical instrument"
+    ],
     "traits": [
       {
         "name": "Bardic Inspiration",
@@ -103,7 +106,7 @@ module.exports = [
   // cleric
   {
     "name": "Cleric",
-    "description": "",
+    "description": "Clerics are intermediaries between the mortal world and the distant planes of the gods. As varied as the gods they serve, clerics strive to embody the handiwork of their deities. No ordinary priest, a cleric is imbued with divine magic.",
     "primary_ability": "Wisdom",
     "hit_die": 8,
     "starting_proficiencies": [
@@ -146,8 +149,8 @@ module.exports = [
   // druid
   {
     "name": "Druid",
-    "description": "",
-    "primary_ability": "Druid",
+    "description": "Whether calling on the elemental forces of nature or emulating the creatures of the animal world, druids are an embodiment of nature’s resilience, cunning, and fury. They claim no mastery over nature. Instead, they see themselves as extensions of nature’s indomitable will.",
+    "primary_ability": "Wisdom",
     "hit_die": 8,
     "starting_proficiencies": [
       "Light Armour",
@@ -176,6 +179,9 @@ module.exports = [
         "Survival"
       ]
     },
+    "tool_proficiencies": [
+      "Herbalism Kit"
+    ],
     "traits": [
       {
         "name": "Druidic",
@@ -197,7 +203,7 @@ module.exports = [
   // fighter
   {
     "name": "Fighter",
-    "description": "",
+    "description": "Questing knights, conquering overlords, royal champions, elite foot soldiers, hardened mercenaries, and bandit kings—as fighters, they all share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat. And they are well acquainted with death, both meting it out and staring it defiantly in the face.",
     "primary_ability": "Strength",
     "hit_die": 10,
     "starting_proficiencies": [
@@ -262,7 +268,7 @@ module.exports = [
   // monk
   {
     "name": "Monk",
-    "description": "",
+    "description": "Whatever their discipline, monks are united in their ability to magically harness the energy that flows in their bodies. Whether channeled as a striking display of combat prowess or a subtler focus of defensive ability and speed, this energy infuses all that a monk does.",
     "primary_ability": "Dexterity",
     "hit_die": 8,
     "starting_proficiencies": [
@@ -280,6 +286,9 @@ module.exports = [
         "Stealth"
       ]
     },
+    "tool_proficiencies": [
+      "One type of musical instrument"
+    ],
     "traits": [
       {
         "name": "Unarmoured defence",
@@ -294,6 +303,275 @@ module.exports = [
     "saving_throws": [
       "Dexterity",
       "Strength"
+    ],
+    "subclasses": []
+  },
+  // paladin
+  {
+    "name": "Paladin",
+    "description": "Whatever their origin and their mission, paladins are united by their oaths to stand against the forces of evil. Whether sworn before a god’s altar and the witness of a priest, in a sacred glade before nature spirits and fey beings, or in a moment of desperation and grief with the dead as the only witness, a paladin’s oath is a powerful bond. It is a source of power that turns a devout warrior into a blessed champion.",
+    "primary_ability": "Charisma",
+    "hit_die": 10,
+    "starting_proficiencies": [
+      "Light Armour",
+      "Medium armour",
+      "Heavy Armour",
+      "Shields",
+      "Simple Weapons",
+      "Martial Weapons"
+    ],
+    "proficiency_choices": {
+      "how_many": 2,
+      "choices": [
+        "Athletics",
+        "Insight",
+        "Intimidation",
+        "Medicine",
+        "Persuasion",
+        "Religion"
+      ]
+    },
+    "traits": [
+      {
+        "name": "Divine Sense",
+        "description": "As an action, until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover. You know the type of any being whose presence you sense, but not its identity. Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated. You can use this feature a number of times equal to 1 + your Charisma modifier. When you finish a long rest, you regain   all expended uses."
+      },
+      {
+        "name": "Lay On Hands",
+        "description": "You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level x 5. As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool. Alternatively, you can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it. You can cure multiple diseases and neutralize multiple poisons with a single use of Lay on Hands, expending hit points separately for each one. This feature has no effect on undead and constructs."
+      }
+    ],
+    "spellcasting":{},
+    "saving_throws": [
+      "Wisdom",
+      "Charisma"
+    ],
+    "subclasses": []
+  },
+  // ranger
+  {
+    "name": "Ranger",
+    "description": "Warriors of the wilderness, rangers specialize in hunting the monsters that threaten the edges of civilization—humanoid raiders, rampaging beasts and monstrosities, terrible giants, and deadly dragons. They learn to track their quarry as a predator does, moving stealthily through the wilds and hiding themselves in brush and rubble. Rangers focus their combat training on techniques that are particularly useful against their specific favored foes.",
+    "primary_ability": "Dexterity",
+    "hit_die": 10,
+    "starting_proficiencies": [
+      "Light Armour",
+      "Medium armour",
+      "Shields",
+      "Simple Weapons",
+      "Martial Weapons"
+    ],
+    "proficiency_choices": {
+      "how_many": 3,
+      "choices": [
+        "Animal Handling",
+        "Athletics",
+        "Insight",
+        "Investigation",
+        "Nature",
+        "Perception",
+        "Stealth",
+        "Survival"
+      ]
+    },
+    "traits": [
+      {
+        "name": "Favoured Enemy",
+        "description": "Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and goblins) as favored enemies. You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them. When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all"
+      },
+      {
+        "name": "Natural Explorer",
+        "description": "Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you’re proficient in. While traveling for an hour or more in your favored terrain, you gain the following benefits: 1: Difficult terrain doesn’t slow your group’s travel. 2: Your group can’t become lost except by magical means. 3: Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger. 4: If you are traveling alone, you can move stealthily at a normal pace. 5: When you forage, you find twice as much food as you normally would. 6: While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area."
+      }
+    ],
+    "spellcasting":{},
+    "saving_throws": [
+      "Strength",
+      "Dexterity"
+    ],
+    "subclasses": []
+  },
+  // rogue
+  {
+    "name": "Rogue",
+    "description": "Rogues rely on skill, stealth, and their foes’ vulnerabilities to get the upper hand in any situation. They have a knack for finding the solution to just about any problem, demonstrating a resourcefulness and versatility that is the cornerstone of any successful adventuring party.",
+    "primary_ability": "Dexterity",
+    "hit_die": 8,
+    "starting_proficiencies": [
+      "Light Armour",
+      "Simple Weapons",
+      "Crossbows (1-Hand)",
+      "Longswords",
+      "Rapiers",
+      "Shortswords"
+    ],
+    "proficiency_choices": {
+      "how_many": 4,
+      "choices": [
+        "Acrobatics",
+        "Athletics",
+        "Deception",
+        "Insight",
+        "Intimidation",
+        "Investigation",
+        "Perception",
+        "Performance",
+        "Persuasion",
+        "Sleight Of Hand",
+        "Stealth"
+      ]
+    },
+    "tool_proficiencies": [
+      "Thieves tools"
+    ],
+    "traits": [
+      {
+        "name": "Expertise",
+        "description": "At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves' tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies."
+      },
+      {
+        "name": "Sneak Attack",
+        "description": "Once per turn, you can deal extra 1d6 damage to one creature you hit with an attack if you have advantage on the attack roll. The attack must use a finesse or a ranged weapon. You don't need advantage on the attack roll if another enemy of the target is within 5 feet of it, that enemy isn't incapacitated, and you don't have disadvantage on the attack roll."
+      },
+      {
+        "name": "Thieves Cant",
+        "description": "During your rogue training you learned thieves' cant, a secret mix of dialect, jargon, and code that allows you to hide messages in seemingly normal conversation. Only another creature that knows thieves' cant understands such messages. It takes four times longer to convey such a message than it does to speak the same idea plainly. In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves' guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run."
+      }
+    ],
+    "spellcasting":{},
+    "saving_throws": [
+      "Intelligence",
+      "Dexterity"
+    ],
+    "subclasses": []
+  },
+  // sorcerer
+  {
+    "name": "Sorcerer",
+    "description": "Sorcerers carry a magical birthright conferred upon them by an exotic bloodline, some otherworldly influence, or exposure to unknown cosmic forces. One can’t study sorcery as one learns a language, any more than one can learn to live a legendary life. No one chooses sorcery; the power chooses the sorcerer.",
+    "primary_ability": "Charisma",
+    "hit_die": 6,
+    "starting_proficiencies": [
+      "Daggers",
+      "Darts",
+      "Slings",
+      "Quarterstaffs",
+      "Light Crossbows"
+    ],
+    "proficiency_choices": {
+      "how_many": 2,
+      "choices": [
+        "Arcana",
+        "Deception",
+        "Insight",
+        "Intimidation",
+        "Persuasion",
+        "Religion"
+      ]
+    },
+    "traits": [],
+    "spellcasting":{
+      "modifier": "Charisma",
+      "cantrips": 4,
+      "first_level_slots": 2,
+      "first_level_known": 2
+    },
+    "saving_throws": [
+      "Constitution",
+      "Charisma"
+    ],
+    "subclasses": [
+      "Draconic Bloodline",
+      "Wild Magic"
+    ]
+  },
+  // warlock
+  {
+    "name": "Warlock",
+    "description": "Warlocks are seekers of the knowledge that lies hidden in the fabric of the multiverse. Through pacts made with mysterious beings of supernatural power, warlocks unlock magical effects both subtle and spectacular. Drawing on the ancient knowledge of beings such as fey nobles, demons, devils, hags, and alien entities of the Far Realm, warlocks piece together arcane secrets to bolster their own power.",
+    "primary_ability": "Charisma",
+    "hit_die": 8,
+    "starting_proficiencies": [
+      "Light Armour",
+      "Simple Weapons"
+    ],
+    "proficiency_choices": {
+      "how_many": 2,
+      "choices": [
+        "Arcana",
+        "Deception",
+        "History",
+        "Intimidation",
+        "Investigation",
+        "Nature",
+        "Religion"
+      ]
+    },
+    "traits": [
+      {
+        "name": "Otherworldly Patron",
+        "description": "You have struck a bargain with an otherworldly being of your choice. Your choice grants you special features. A warlock is defined by a pact with an otherworldly being. Sometimes the relationship between warlock and patron is like that of a cleric and a deity, though the beings that serve as patrons for warlocks are not gods. A warlock might lead a cult dedicated to a demon prince, an archdevil, or an utterly alien entity—beings not typically served by clerics. More often, though, the arrangement is similar to that between a master and an apprentice. The warlock learns and grows in power, at the cost of occasional services performed on the patron’s behalf."
+      }
+    ],
+    "spellcasting":{
+      "modifier": "Charisma",
+      "cantrips": 2,
+      "first_level_slots": 2,
+      "first_level_known": 2
+    },
+    "saving_throws": [
+      "Wisdom",
+      "Charisma"
+    ],
+    "subclasses": [
+      "The Archfey",
+      "The Fiend",
+      "The Great Old One"
+    ]
+  },
+  // wizard
+  {
+    "name": "Wizard",
+    "description": "Wizards are supreme magic-users, defined and united as a class by the spells they cast. Drawing on the subtle weave of magic that permeates the cosmos, wizards cast spells of explosive fire, arcing lightning, subtle deception, and brute-force mind control. Their magic conjures monsters from other planes of existence, glimpses the future, or turns slain foes into zombies. Their mightiest spells change one substance into another, call meteors down from the sky, or open portals to other worlds.",
+    "primary_ability": "Intelligence",
+    "hit_die": 6,
+    "starting_proficiencies": [
+      "Daggers",
+      "Darts",
+      "Slings",
+      "Quarterstaffs",
+      "Light Crossbows"
+    ],
+    "proficiency_choices": {
+      "how_many": 2,
+      "choices": [
+        "Arcana",
+        "History",
+        "Insight",
+        "Investigation",
+        "Medicine",
+        "Religion"
+      ]
+    },
+    "traits": [
+      {
+        "name": "Spellbook",
+        "description": "At 1st level, you have a spellbook containing six 1st-level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know. When you find a wizard spell of 1st level or higher, you can add it to your spellbook if it is of a level which you can prepare and if you can spare the time to decipher and copy it. For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells. Replacing your spellbook: You can copy a spell from your own spellbook into another book. This is just like copying a new spell into your spellbook, but faster and easier, since you understand your own notation and already know how to cast the spell. You need spend only 1 hour and 10 gp for each level of the copied spell. If you lose your spellbook, you can use the same procedure to transcribe the spells that you have prepared into a new spellbook. Filling out the remainder of your spellbook requires you to find new spells to do so, as normal."
+      },
+      {
+        "name": "Arcane Recovery",
+        "description": "Once per day when you finish a short rest, you can choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your wizard level (rounded up), and none of the slots can be 6th level or higher."
+      }
+    ],
+    "spellcasting":{
+      "modifier": "Intelligence",
+      "cantrips": 3,
+      "first_level_slots": 2,
+      "first_level_known": 6
+    },
+    "saving_throws": [
+      "Wisdom",
+      "Intelligence"
     ],
     "subclasses": []
   },

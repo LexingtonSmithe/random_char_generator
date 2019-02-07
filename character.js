@@ -34,18 +34,16 @@ module.exports = {
     "Charisma": 0
   },
   "Stats":{
-    "Proficieny Bonus": 2,
+    "Proficiency Bonus": 2,
     "Hit Die": 0,
     "Max Health": 0,
-    "Base AC": 0,
     "Speed": 0,
     "Size": "",
-    "Passive Perception": 0,
   },
   "Skills": {
     "Acrobatics": 0,
     "Animal Handling": 0,
-    "Aracana": 0,
+    "Arcana": 0,
     "Athletics": 0,
     "Deception": 0,
     "History": 0,
@@ -81,8 +79,17 @@ module.exports = {
     "Distinguishing Marks": ""
   },
   "Racial Abilities": [],
+  "Background Feature": {},
   "Class Abilities": [],
   "Spell Casting":{},
   "Proficiencies":[],
-  "Languages": []
+  "Tool Proficiencies": [],
+  "Languages": [],
+  "Starting Equipment": [],
+  "Money": {
+    "Platinum": 0,
+    "Gold": 0,
+    "Silver": 0,
+    "Copper": 0
+  }
 }
