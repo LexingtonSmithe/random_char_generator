@@ -25,7 +25,7 @@ module.exports = [
   },
   {
     "Alignment": "Lawful Evil",
-    "Description": "You methodically takes what you wants within the limits of your code of conduct without regard for whom it hurts. You cares about tradition, loyalty, and order but not about freedom, dignity, or life. You play by the rules but without mercy or compassion. You are comfortable in a hierarchy and would like to rule, but are willing to serve. Ypu condemn others not according to their actions but according to race, religion, homeland, or social rank. You're is loath to break laws or promises."
+    "Description": "You methodically take what you want within the limits of your code of conduct without regard for whom it hurts. You cares about tradition, loyalty, and order but not about freedom, dignity, or life. You play by the rules but without mercy or compassion. You are comfortable in a hierarchy and would like to rule, but are willing to serve. Ypu condemn others not according to their actions but according to race, religion, homeland, or social rank. You're is loath to break laws or promises."
   },
   {
     "Alignment": "Neutral Evil",
