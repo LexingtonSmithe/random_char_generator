@@ -29,7 +29,27 @@ router.get('/generateCharacter', function(req, res) {
       data
    });
 });
-
+router.get('/generateCharacterLite', function(req, res) {
+    var data = builder.CreateChar();
+    data = {
+      "Name": character.Name,
+      "Race": {
+        "Race": character.Race.Race,
+        "Sub-Race": character.Race["Sub-Race"]
+      },
+      "Class": {
+        "Class": character.Class.Class,
+        "Sub-Class": character.Class["Sub-Class"],
+      },
+      "Background": character.Background.Name,
+      "Appearance": character.Appearance,
+      "Tool Proficiencies": character["Tool Proficiencies"],
+      "Starting Equipment": character["Starting Equipment"],
+    }
+    res.json({
+      data
+   });
+});
 router.get('/rollStats', function(req, res) {
 
   var strength =  utils.rollStatDie(4, 6, "Strength");
