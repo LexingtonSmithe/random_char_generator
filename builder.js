@@ -1,5 +1,4 @@
 var exports = module.exports = {};
-var request = require('sync-request');
 var utils = require('./utils.js');
 var character = require('./character.js');
 var names = require('./Library/names.js');
@@ -23,7 +22,7 @@ var skill_bonuses = [];
 var save_proficiencies = [];
 var tool_proficiencies = [];
 var starting_equipment = [];
-var reset = character;
+const reset = character;
 
 exports.CreateChar = function(){
   console.log("----------------------------------------------------------------------------------");
@@ -167,7 +166,7 @@ function getSubRace(subrace_name){
   for(var s = 0; s < subraces.length; s++){
     if(subraces[s].name === subrace_name){
       num = s;
-      console.log("Found subrace name: " + subrace_name + " = " + subraces[num].name);
+      //console.log("Found subrace name: " + subrace_name + " = " + subraces[num].name);
       character.Race["Sub-Race"] = subraces[num].name;
       character["Ability Scores"].Strength += subraces[num].ability_bonuses[0];
       character["Ability Scores"].Dexterity += subraces[num].ability_bonuses[1];
@@ -237,7 +236,7 @@ function chooseClass(){
   var num = utils.getRandomInt(0, classes.length);
   character.Class.Class = classes[num].name;
   console.log("Class chosen: " + classes[num].name);
-  character.Class.Description = classes[num].description;
+  character.Class.Description= classes[num].description;
   character.Class["Primary Ability"] = classes[num].primary_ability
   character.Stats["Hit Die"] = classes[num].hit_die;
   if(classes[num].proficiency_choices){
@@ -281,20 +280,36 @@ function chooseClass(){
     character["Spell Casting"]["First level known"] = classes[num].spellcasting.first_level_known;
   };
   if(classes[num].subclasses.length){
-    var odds = utils.getRandomInt(0, 2);
-    if(odds == 2){ // don't always get a subclasses only do it 1/3 of the time
       var c_num = utils.getRandomInt(0,classes[num].subclasses.length);
       var subclasses_name = classes[num].subclasses[c_num];
+      console.log("Sub-class: " + subclasses_name)
       getSubClass(subclasses_name);
-    } else {
-      character.Class["Sub-Class"] = "None"
-    }
   } else {
     character.Class["Sub-Class"] = "None"
-  }
+  };
 };
-function getSubClass(num){
-
+function getSubClass(subclasses_name){
+  for(var s = 0; s < subclasses.length; s++){
+    if(subclasses[s].name === subclasses_name){
+      num = s;
+      console.log("Found subrace name: " + subclasses_name + " = " + subclasses[num].name);
+      character.Class["Sub-Class"] = subclasses[num].name;
+      character.Class.Description += (" " + subclasses[num].description);
+      if(subclasses[num].starting_proficiencies) {
+        for(var i = 0; i < subclasses[num].starting_proficiencies.length; i++){
+          var p = subclasses[num].starting_proficiencies[i];
+          character.Proficiencies.push(p);
+        }
+      }
+      if(subclasses[num].traits) {
+        for(var i = 0; i < subclasses[num].traits.length; i++){
+          var trait = subclasses[num].traits[i];
+          character["Class Abilities"].push(trait);
+        }
+      }
+      break;
+    }
+  }
 };
 function getSkills(){
   character.Skills.Acrobatics = module.exports.CalculateModifer(getAbilityScore("Dexterity"));
@@ -479,7 +494,6 @@ exports.CalculateModifer = function(ability_score){
   };
   return mod;
 };
-
 function resetCharacter(){
   character = reset;
   skill_bonuses = [];
