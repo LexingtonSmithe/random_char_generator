@@ -1,7 +1,9 @@
 # random_char_generator
 
 Welcome! For use with DnD this generator pulls from the players handbook for character generation.
+
 The characters made using this tool are in no way optimized and all traits, classes and skills are generated randomly.
+
 Spice up your campaign with a dragonborn rogue with no dexterity and high wisdom.
 
 Probably just use it as inspriation...
