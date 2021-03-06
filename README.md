@@ -13,9 +13,12 @@ Probably just use it as inspriation...
 # endpoints
 /api/health
 - server health
+
 /api/generateCharacter
 - A full character generation with descriptions and stats
+
 /api/generateCharacterLite
 - No stats for using your own system
+
 /api/rollStats
 - Just the stats, ability scores and skills
