@@ -1,16 +1,16 @@
 var exports = module.exports = {};
-var utils = require('./utils.js');
 var character = require('./character.js');
-var names = require('./Library/names.js');
-var races = require('./Library/races.js');
-var subraces = require('./Library/subraces.js');
-var classes = require('./Library/classes.js');
-var subclasses = require('./Library/subclasses.js');
-var backgrounds = require('./Library/backgrounds.js');
-var alignments = require('./Library/alignments.js');
-var appearances = require('./Library/appearances.js');
+const utils = require('./utils.js');
+const names = require('./Library/names.js');
+const races = require('./Library/races.js');
+const subraces = require('./Library/subraces.js');
+const classes = require('./Library/classes.js');
+const subclasses = require('./Library/subclasses.js');
+const backgrounds = require('./Library/backgrounds.js');
+const alignments = require('./Library/alignments.js');
+const appearances = require('./Library/appearances.js');
 
-var mainURL = 'http://dnd5eapi.co/api'
+const mainURL = 'http://dnd5eapi.co/api'
 function generateEndpoint(path, param) {
     param = param || ''
     url = mainURL + path + param
@@ -24,20 +24,22 @@ var tool_proficiencies = [];
 var starting_equipment = [];
 const reset = character;
 
-exports.CreateChar = function(){
+exports.CreateChar = function(class_based_stats, not_evil){
   console.log("----------------------------------------------------------------------------------");
   console.log("---------------------------------------------------- Creating new character ------");
   resetCharacter();
-  console.log("---------------------------------------------------- Rolling Stats ---------------");
-  rollStats();
   console.log("---------------------------------------------------- Choosing Alignment ----------");
-  chooseAlignment();
+  chooseAlignment(not_evil);
   console.log("---------------------------------------------------- Choosing Race ---------------");
   chooseRace();
   console.log("---------------------------------------------------- Choosing Class --------------");
   chooseClass();
+  console.log("---------------------------------------------------- Choosing Name ---------------");
+  chooseName();
   console.log("---------------------------------------------------- Choosing Background ---------");
   chooseBackground();
+  console.log("---------------------------------------------------- Rolling Stats ---------------");
+  rollStats(class_based_stats);
   console.log("---------------------------------------------------- Choosing Appearance ---------");
   chooseAppearance();
   console.log("---------------------------------------------------- Calculating Skills ----------");
@@ -58,32 +60,70 @@ exports.CreateChar = function(){
   return character;
 };
 
-function chooseName(race){
-  firstName = names[race].First_Names[utils.getRandomInt(0,names[race].First_Names.length)];
-  lastName = names[race].Last_Names[utils.getRandomInt(0,names[race].Last_Names.length)];
-  if(lastName != ""){
-    lastName = " " + lastName
+function chooseName(){
+  if(character.Race.Race != ""){
+    let race = character.Race.Race;
+    firstName = names[race].First_Names[utils.getRandomInt(0,names[race].First_Names.length)];
+    lastName = names[race].Last_Names[utils.getRandomInt(0,names[race].Last_Names.length)];
+    if(lastName != ""){
+      lastName = " " + lastName
+    }
+    name = firstName + lastName;
+    console.log("Name Chosen: " + name);
+    character.Name = name;
+  } else {
+    console.log("no race found when choosing a name, assigned generic name - fix this")
+    character.Name = "Bob"
   }
-  name = firstName + lastName;
-  character.Name = name;
-  return name;
 };
-function rollStats(){
-  character["Ability Scores"].Strength += utils.rollStatDie(4, 6, "Strength");
-  character["Ability Scores"].Dexterity += utils.rollStatDie(4, 6, "Dexterity");
-  character["Ability Scores"].Constitution += utils.rollStatDie(4, 6, "Constitution");
-  character["Ability Scores"].Intelligence += utils.rollStatDie(4, 6, "Intelligence");
-  character["Ability Scores"].Wisdom += utils.rollStatDie(4, 6, "Wisdom");
-  character["Ability Scores"].Charisma += utils.rollStatDie(4, 6, "Charisma");
+function rollStats(class_preffered){
+
+  let statArray = utils.rollStatDice();
+  if(class_preffered && character.Class.Class != ""){
+      let player_class = character.Class.Class;
+      statArray.sort((a,b)=>b-a)
+      //console.log('Setting Preffered Stats For: ' + player_class)
+      let num = 0;
+      for(i=0; i< classes.length; i++){
+        if(classes[i].name == player_class){
+          num = i;
+          break;
+        }
+      }
+      let preffered_stats = classes[num].stat_weighting;
+      for(j=0; j < preffered_stats.length; j++){
+        //console.log("Setting: " + preffered_stats[j] + " -> " + statArray[j] );
+        character["Ability Scores"][preffered_stats[j]] += statArray[j];
+      }
+  } else {
+    console.log("Roll Stength")
+    character["Ability Scores"].Strength += statArray[0];
+    console.log("Roll Dexterity")
+    character["Ability Scores"].Dexterity += statArray[1];
+    console.log("Roll Constitution")
+    character["Ability Scores"].Constitution += statArray[2];
+    console.log("Roll Intelligence")
+    character["Ability Scores"].Intelligence += statArray[3];
+    console.log("Roll Wisdom")
+    character["Ability Scores"].Wisdom += statArray[4];
+    console.log("Roll Charisma")
+    character["Ability Scores"].Charisma += statArray[5];
+  }
 };
-function chooseAlignment(){
-  character.Alignment = alignments[utils.getRandomInt(0, alignments.length)];
+
+function chooseAlignment(not_evil){
+  if(not_evil){
+      console.log("No Evil Characters!");
+      character.Alignment = alignments[utils.getRandomInt(0, alignments.length - 3)];
+  } else {
+      character.Alignment = alignments[utils.getRandomInt(0, alignments.length)];
+  }
+
 };
 function chooseRace(race){
   var num = utils.getRandomInt(0, races.length);
   character.Race.Race = races[num].name
   console.log("Race chosen: " + races[num].name);
-  chooseName(races[num].name);
   character.Race.Description = races[num].description
   character.Appearance.Age = utils.getRandomInt(races[num].min_age, races[num].max_age) + " years old";
   character.Appearance.Height = utils.getRandomInt(races[num].min_height, races[num].max_height) + "ft " + utils.getRandomInt(0,7) + " inches";
@@ -160,6 +200,7 @@ function chooseRace(race){
     character.Race["Sub-Race"] = "None"
   }
 };
+
 function getSubRace(subrace_name){
   var num = 0;
   console.log("Looking for subrace: " + subrace_name)
@@ -292,7 +333,7 @@ function getSubClass(subclasses_name){
   for(var s = 0; s < subclasses.length; s++){
     if(subclasses[s].name === subclasses_name){
       num = s;
-      console.log("Found subrace name: " + subclasses_name + " = " + subclasses[num].name);
+      // console.log("Found subrace name: " + subclasses_name + " = " + subclasses[num].name);
       character.Class["Sub-Class"] = subclasses[num].name;
       character.Class.Description += (" " + subclasses[num].description);
       if(subclasses[num].starting_proficiencies) {

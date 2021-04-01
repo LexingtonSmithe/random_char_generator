@@ -17,11 +17,11 @@ module.exports = [
   },
   {
     "Alignment": "True Neutral",
-    "Description": "You do what seems to be a good idea. You doesn't feel strongly one way or the other when it comes to good vs. evil or law vs. chaos. Mostly you exhibit a lack of conviction or bias rather than a commitment to neutrality. Ulimately you think of good as better than evil-after all, as you would rather have good neighbors and rulers than evil ones. Still, you're not personally committed to upholding good in any abstract or universal way"
+    "Description": "You do what seems to be a good idea. You don't feel strongly one way or the other when it comes to good vs. evil or law vs. chaos. Mostly you exhibit a lack of conviction or bias rather than a commitment to neutrality. Ulimately you think of good as better than evil-after all, as you would rather have good neighbors and rulers than evil ones. Still, you're not personally committed to upholding good in any abstract or universal way"
   },
   {
     "Alignment": "Chaotic Neutral",
-    "Description": "You follows your whims. You're an individualist first and last. You values your own liberty but don't strive to protect others' freedom. You avoid authority, resent restrictions, and challenge traditions. You do not intentionally disrupt organizations as part of a campaign of anarchy. To do so, you would have to be motivated either by good (and a desire to liberate others) or evil (and a desire to make those different from himself suffer). You may be unpredictable, but your behavior is not totally random"
+    "Description": "You follows your whims. You're an individualist first and last. You value your own liberty but don't strive to protect others' freedom. You avoid authority, resent restrictions, and challenge traditions. You do not intentionally disrupt organizations as part of a campaign of anarchy. To do so, you would have to be motivated either by good (and a desire to liberate others) or evil (and a desire to make those different from himself suffer). You may be unpredictable, but your behavior is not totally random"
   },
   {
     "Alignment": "Lawful Evil",

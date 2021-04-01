@@ -7,21 +7,27 @@ exports.getRandomInt = function(min, max){
 }
 
 
-exports.rollStatDie = function(howMany, ofWhatDie, forWhatStat){
-    min = Math.ceil(1);
-    max = Math.floor(ofWhatDie);
-    var arr = [];
-    for(var i = 0; i < howMany; i++){
-        arr.push(Math.floor(Math.random() * (max - min)) + min);
+exports.rollStatDice = function(){
+    let howMany = 4;
+    let min = 1;
+    let max = 6;
+    let statArray = [];
+
+    for(j = 0; j < 6; j++){
+      let singleStat = [];
+      for(var i = 0; i < howMany; i++){
+          singleStat.push(Math.floor(Math.random() * max) + min);
+      }
+      let pos = singleStat.indexOf(Math.min.apply(Math, singleStat));
+      let lowest = singleStat[pos]
+      console.log("Rolled: " + singleStat)
+      singleStat.splice(pos, 1);
+      let total = singleStat.reduce((a,b)=>(a+b), 0);
+      console.log("Removed Lowest: " + lowest + " Total: " + total);
+      statArray.push(total)
     }
-    var pos = arr.indexOf(Math.min.apply(Math, arr));
-    arr.splice(pos, 1);
-    total = arr.reduce(add, 0);
-    function add(a, b) {
-        return a + b;
-    }
-    // console.log("Rolled: " + arr + " Total: " + total + " For: " + forWhatStat)
-    return total
+    console.log("Available Stats: " + statArray.sort((a,b)=>b-a));
+    return statArray
 }
 
 exports.rollDie = function(howMany, ofWhatDie){
@@ -29,7 +35,7 @@ exports.rollDie = function(howMany, ofWhatDie){
     max = Math.floor(ofWhatDie);
     var total = 0;
     for(var i = 0; i < howMany; i++){
-        total += (Math.floor(Math.random() * (max - min)) + min);
+        total += (Math.floor(Math.random() * max) + min);
     }
     return total
 }
