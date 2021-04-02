@@ -20,10 +20,10 @@ exports.rollStatDice = function(){
       }
       let pos = singleStat.indexOf(Math.min.apply(Math, singleStat));
       let lowest = singleStat[pos]
-      console.log("Rolled: " + singleStat)
+      //console.log("Rolled: " + singleStat)
       singleStat.splice(pos, 1);
       let total = singleStat.reduce((a,b)=>(a+b), 0);
-      console.log("Removed Lowest: " + lowest + " Total: " + total);
+      //console.log("Removed Lowest: " + lowest + " Total: " + total);
       statArray.push(total)
     }
     console.log("Available Stats: " + statArray.sort((a,b)=>b-a));

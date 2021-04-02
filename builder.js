@@ -24,7 +24,7 @@ var tool_proficiencies = [];
 var starting_equipment = [];
 const reset = character;
 
-exports.CreateChar = function(class_based_stats, not_evil){
+exports.CreateChar = function(stat_generation, not_evil){
   console.log("----------------------------------------------------------------------------------");
   console.log("---------------------------------------------------- Creating new character ------");
   resetCharacter();
@@ -39,7 +39,7 @@ exports.CreateChar = function(class_based_stats, not_evil){
   console.log("---------------------------------------------------- Choosing Background ---------");
   chooseBackground();
   console.log("---------------------------------------------------- Rolling Stats ---------------");
-  rollStats(class_based_stats);
+  rollStats(stat_generation);
   console.log("---------------------------------------------------- Choosing Appearance ---------");
   chooseAppearance();
   console.log("---------------------------------------------------- Calculating Skills ----------");
@@ -76,46 +76,51 @@ function chooseName(){
     character.Name = "Bob"
   }
 };
-function rollStats(class_preffered){
+function rollStats(stat_generation){
+  var player_class = character.Class.Class;
+  switch(stat_generation){
+    case "standard_array":
+      if(player_class != ""){
+        console.log("Using Standard Array - Class Based");
+        let stat_array = [15, 14, 13, 12, 10, 8];
+        let stats = reorderStatsBasedOnClass(player_class, stat_array);
+        setStats(stats);
+      } else {
+        console.log("No Class Found When Using STANDARD ARRAY");
+      }
+    break;
 
-  let statArray = utils.rollStatDice();
-  if(class_preffered && character.Class.Class != ""){
-      let player_class = character.Class.Class;
-      statArray.sort((a,b)=>b-a)
-      //console.log('Setting Preffered Stats For: ' + player_class)
-      let num = 0;
-      for(i=0; i< classes.length; i++){
-        if(classes[i].name == player_class){
-          num = i;
-          break;
-        }
+    case "roll_in_order":
+      console.log("Letting The Gods Decide!");
+      let stat_array = utils.rollStatDice();
+      setStats(stat_array);
+    break;
+
+    case "roll_for_class":
+      if(player_class != ""){
+        console.log("Rolling And Setting Based On Class");
+        let stat_array = utils.rollStatDice();
+        let stats = reorderStatsBasedOnClass(player_class, stat_array);
+        setStats(stats);
+      } else {
+        console.log("No Class Found When Using ROLLS");
       }
-      let preffered_stats = classes[num].stat_weighting;
-      for(j=0; j < preffered_stats.length; j++){
-        //console.log("Setting: " + preffered_stats[j] + " -> " + statArray[j] );
-        character["Ability Scores"][preffered_stats[j]] += statArray[j];
-      }
-  } else {
-    console.log("Roll Stength")
-    character["Ability Scores"].Strength += statArray[0];
-    console.log("Roll Dexterity")
-    character["Ability Scores"].Dexterity += statArray[1];
-    console.log("Roll Constitution")
-    character["Ability Scores"].Constitution += statArray[2];
-    console.log("Roll Intelligence")
-    character["Ability Scores"].Intelligence += statArray[3];
-    console.log("Roll Wisdom")
-    character["Ability Scores"].Wisdom += statArray[4];
-    console.log("Roll Charisma")
-    character["Ability Scores"].Charisma += statArray[5];
+    break
+
+    default:
+      console.log("No Stat Generation Method Listed - Using True Random");
+      let stat_array = utils.rollStatDice();
+      setStats(stat_array);
+    break;
   }
 };
 
 function chooseAlignment(not_evil){
-  if(not_evil){
+  if(not_evil == 'true'){
       console.log("No Evil Characters!");
       character.Alignment = alignments[utils.getRandomInt(0, alignments.length - 3)];
   } else {
+    console.log("Evil Characters Allowed!");
       character.Alignment = alignments[utils.getRandomInt(0, alignments.length)];
   }
 
@@ -535,6 +540,52 @@ exports.CalculateModifer = function(ability_score){
   };
   return mod;
 };
+
+function reorderStatsBasedOnClass(player_class, stats){
+    let temp_scores = {
+      "Strength": 0,
+      "Dexterity": 0,
+      "Constitution": 0,
+      "Intelligence": 0,
+      "Wisdom": 0,
+      "Charisma": 0
+    }
+    let new_stats = [];
+    stats.sort((a,b)=>b-a)
+    //console.log('Setting Preffered Stats For: ' + player_class)
+    let num = 0;
+    for(i=0; i< classes.length; i++){
+      if(classes[i].name == player_class){
+        num = i;
+        break;
+      }
+    }
+    let preffered_stats = classes[num].stat_weighting;
+
+    for(j=0; j < preffered_stats.length; j++){
+      //console.log("Setting: " + preffered_stats[j] + " -> " + statArray[j] );
+      temp_scores[preffered_stats[j]] += stats[j];
+    }
+    new_stats.push(temp_scores.Strength);
+    new_stats.push(temp_scores.Dexterity);
+    new_stats.push(temp_scores.Constitution);
+    new_stats.push(temp_scores.Intelligence);
+    new_stats.push(temp_scores.Wisdom);
+    new_stats.push(temp_scores.Charisma);
+    console.log("Reordered Based On Class: " + new_stats);
+  return new_stats;
+}
+
+function setStats(stats){
+  let stat_array = stats;
+  character["Ability Scores"].Strength += stat_array[0];
+  character["Ability Scores"].Dexterity += stat_array[1];
+  character["Ability Scores"].Constitution += stat_array[2];
+  character["Ability Scores"].Intelligence += stat_array[3];
+  character["Ability Scores"].Wisdom += stat_array[4];
+  character["Ability Scores"].Charisma += stat_array[5];
+}
+
 function resetCharacter(){
   character = reset;
   skill_bonuses = [];

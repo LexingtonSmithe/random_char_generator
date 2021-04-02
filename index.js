@@ -23,16 +23,18 @@ router.get('/health', function(req, res) {
 
 
 router.get('/generateCharacter', function(req, res) {
-  let not_evil = true;
-  let class_based_stats = true;
-  var data = builder.CreateChar(class_based_stats, not_evil);
+  let not_evil = req.query.no_evil || "true";
+  let stat_generation = req.query.stat_generation || "standard_array";
+  var data = builder.CreateChar(stat_generation, not_evil);
     res.json({
       data
    });
 });
 router.get('/generateCharacterLite', function(req, res) {
-    var data = builder.CreateChar();
-    data = {
+  let not_evil = req.query.no_evil || "true";
+  let stat_generation = req.query.stat_generation || "standard_array";
+  var data = builder.CreateChar(stat_generation, not_evil);
+  data = {
       "Name": character.Name,
       "Race": {
         "Race": character.Race.Race,
@@ -46,10 +48,10 @@ router.get('/generateCharacterLite', function(req, res) {
       "Appearance": character.Appearance,
       "Tool Proficiencies": character["Tool Proficiencies"],
       "Starting Equipment": character["Starting Equipment"],
-    }
-    res.json({
+  }
+  res.json({
       data
-   });
+  });
 });
 router.get('/rollStats', function(req, res) {
   let statArray = utils.rollStatDice();
@@ -59,6 +61,7 @@ router.get('/rollStats', function(req, res) {
   var intelligence = statArray[3];
   var wisdom = statArray[4];
   var charisma = statArray[5];
+
     var stats = {
       "Ability Scores": {
         "Strength": strength,
