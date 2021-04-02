@@ -78,11 +78,13 @@ function chooseName(){
 };
 function rollStats(stat_generation){
   var player_class = character.Class.Class;
+  var stat_array = [];
+
   switch(stat_generation){
     case "standard_array":
       if(player_class != ""){
         console.log("Using Standard Array - Class Based");
-        let stat_array = [15, 14, 13, 12, 10, 8];
+        stat_array = [15, 14, 13, 12, 10, 8];
         let stats = reorderStatsBasedOnClass(player_class, stat_array);
         setStats(stats);
       } else {
@@ -92,14 +94,14 @@ function rollStats(stat_generation){
 
     case "roll_in_order":
       console.log("Letting The Gods Decide!");
-      let stat_array = utils.rollStatDice();
+      stat_array = utils.rollStatDice();
       setStats(stat_array);
     break;
 
     case "roll_for_class":
       if(player_class != ""){
         console.log("Rolling And Setting Based On Class");
-        let stat_array = utils.rollStatDice();
+        stat_array = utils.rollStatDice();
         let stats = reorderStatsBasedOnClass(player_class, stat_array);
         setStats(stats);
       } else {
@@ -109,7 +111,7 @@ function rollStats(stat_generation){
 
     default:
       console.log("No Stat Generation Method Listed - Using True Random");
-      let stat_array = utils.rollStatDice();
+      stat_array = utils.rollStatDice();
       setStats(stat_array);
     break;
   }
@@ -192,7 +194,7 @@ function chooseRace(race){
     trait = races[num].traits[i];
     character["Racial Abilities"].push(trait);
   }
-  if(races[num].subraces.length){
+  if(races[num].subraces.length  > 1){
     var odds = utils.getRandomInt(0, 2);
     if(odds == 2 || races[num].name == "Dragonborn"){
       var s_num = utils.getRandomInt(0,races[num].subraces.length);
